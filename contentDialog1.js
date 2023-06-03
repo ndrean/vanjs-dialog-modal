@@ -1,50 +1,47 @@
-import van from "./van-0.11.10.min.js";
+const contentD1 = ({ ctx, ...props }) => {
+  const { van, classes } = ctx;
+  const { article, label, input, div, button, footer, header, h1 } = van.tags;
+  const { id, idContent, states } = props;
+  const [state, ...rest] = states;
 
-const { header, article, footer, label, input, div, h1, button } = van.tags;
-
-const Header = (ctx) => (content) =>
-  header(h1({ class: ctx.classes.h1 }, content));
-
-const btnAccept = (id) =>
-  button(
-    {
-      onclick: () => document.getElementById(id).close(),
-    },
-    "Accept"
-  );
-
-const btnClose = (id, state) =>
-  button(
-    {
-      onclick: () => {
-        state.val = false;
-        document.getElementById(id).close();
+  const btnClose = (id, state) =>
+    button(
+      {
+        onclick: () => {
+          state.val = false;
+          document.getElementById(id).close();
+        },
       },
-    },
-    "close"
-  );
-
-const contentD1 =
-  (ctx) =>
-  ({ id, idContent, states }) => {
-    const [state, ...rest] = states;
-    return div(
-      { id: idContent },
-      Header(ctx)("My beauty"),
-      article(
-        label(
-          input({
-            type: "checkbox",
-            id: "agreement",
-            name: "agreement",
-            checked: state,
-            onchange: (e) => (state.val = e.target.checked),
-          }),
-          "I agree with the terms and conditions"
-        )
-      ),
-      footer(btnClose(id, state), btnAccept(id))
+      "close"
     );
-  };
+
+  const btnAccept = (id) =>
+    button(
+      {
+        onclick: () => {
+          document.getElementById(id).close();
+        },
+      },
+      "Accept"
+    );
+
+  return div(
+    { id: idContent },
+    header(h1({ class: classes.h1 }, "My beauty")),
+    article(
+      label(
+        input({
+          type: "checkbox",
+          id: "agreement",
+          name: "agreement",
+          checked: state,
+          onchange: (e) => (state.val = e.target.checked),
+        }),
+        "I agree with the terms and conditions"
+      )
+    ),
+    footer({ class: classes.footer }, btnClose(id, state), btnAccept(id))
+  );
+};
 
 export default contentD1;

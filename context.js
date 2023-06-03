@@ -7,6 +7,7 @@ const context = {
     h1: "blueBisque",
     isTrue: "accepted",
     isFalse: "denied",
+    footer: "footer",
   },
 };
 

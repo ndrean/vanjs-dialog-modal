@@ -1,10 +1,11 @@
-import van from "./van-0.11.10.min.js";
+import van from "./van-0.11.11.min.js";
+import context from "./context.js";
 import objstr from "./obj-str.js";
 import Dialog from "./dialog.js";
-import context from "./context.js";
+import { contentForm, setOutput } from "./contentForm.js";
 import contentD1 from "./contentDialog1.js";
-import formContent from "./contentForm.js";
 
+context.van = van;
 const { p, button, br, output, span } = van.tags;
 
 const pwd = van.state(""),
@@ -21,12 +22,16 @@ const status = (ctx) => (state) => {
       ? "I agreed with the terms and conditions"
       : "I denied the terms and conditions";
 
+  const {
+    classes: { isTrue, isFalse },
+  } = ctx;
+
   return van.bind(state, (value) =>
     span(
       {
         class: objstr({
-          [ctx.classes.isTrue]: value === true,
-          [ctx.classes.isFalse]: value === false,
+          [isTrue]: value === true,
+          [isFalse]: value === false,
         }),
       },
       content(value)
@@ -34,23 +39,19 @@ const status = (ctx) => (state) => {
   );
 };
 
-const myFirstDialog = (ctx = {}) =>
-  Dialog({
+function myFirstDialog(ctx) {
+  return Dialog({
+    ctx,
     id: "d1",
     idContent: "c1",
     inside: "inside1",
     states: [agreement],
-    content: contentD1(ctx),
+    content: contentD1,
   });
-
+}
 // --> 1st dialog
 
 // <-- 2d dialog: form with output
-const setOutput = (val) => {
-  const output = document.getElementsByTagName("output")[0];
-  output.value = val;
-};
-
 const btnOpenForm = (ctx) => (id) =>
   button(
     {
@@ -62,28 +63,26 @@ const btnOpenForm = (ctx) => (id) =>
     "open"
   );
 
-const myFormDialog = (ctx = {}) =>
-  Dialog({
+function myFormDialog(ctx) {
+  return Dialog({
+    ctx,
     id: "d2",
     idContent: "f1",
     inside: "inside2",
     states: [pwd, slide],
-    content: formContent(ctx),
+    content: contentForm,
   });
-
-// --> 2d dialog
+}
 
 van.add(
   document.body,
-  btnShow(context)("d1"),
-  myFirstDialog(context),
-  p(agreement),
-  status(context)(agreement),
-  br(),
   btnOpenForm(context)("d2"),
   myFormDialog(context),
   br(),
-  output()
+  output(),
+  br(),
+  btnShow(context)("d1"),
+  myFirstDialog(context),
+  p(agreement),
+  status(context)(agreement)
 );
-
-export { setOutput };

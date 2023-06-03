@@ -1,4 +1,4 @@
-import van from "./van-0.11.10.min.js";
+import van from "./van-0.11.11.min.js";
 const { p, button, label, form, input, br } = van.tags;
 
 //  2 inputs [password, slider] and 1 checkbox to display hidden password
@@ -26,9 +26,11 @@ const Form = ({ ctx, id, idContent, states, handleSubmit }) => {
         id: "pwdbox",
         name: "pwdbox",
         type: "checkbox",
-        onchange: ({ target }) => {
+        onchange: () => {
           const pwd = document.getElementById("password");
-          return target.checked ? (pwd.type = "text") : (pwd.type = "password");
+          return e.target.checked
+            ? (pwd.type = "text")
+            : (pwd.type = "password");
         },
       })
     ),

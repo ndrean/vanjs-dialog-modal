@@ -26,3 +26,14 @@
   font-size: bold;
   background-color: lightgrey;
 }
+
+.footer {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.input {
+  margin: 10px;
+}
