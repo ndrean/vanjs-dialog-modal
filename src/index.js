@@ -84,6 +84,5 @@ van.add(
   ),
   AgreementModal(),
   br(),
-  Status(agreement),
-  p(agreement)
+  Status(agreement)
 );
