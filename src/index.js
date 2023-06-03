@@ -73,10 +73,10 @@ van.add(
   document.body,
   div(
     { class: context.classes.btnDiv },
-    Show({ id: "d2", label: "Open the form" }),
-    FormModal(),
-    output({ id: "output" })
+    Show({ id: "d2", label: "Open the form" })
   ),
+  FormModal(),
+  output({ id: "output" }),
   br(),
   div(
     { class: context.classes.btnDiv },
