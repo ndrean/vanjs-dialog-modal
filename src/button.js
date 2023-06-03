@@ -1,4 +1,5 @@
 import "./index.css";
+import "./defer.css";
 
 export default function (ctx) {
   const { van, objStr } = ctx;

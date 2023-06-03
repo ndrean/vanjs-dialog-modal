@@ -35,11 +35,7 @@ body {
   font-family: sans-serif;
   scroll-behavior: smooth;
   color: midnightblue;
-}
-form {
-  padding: 10px;
-  border-radius: 10px;
-  box-shadow: var(--shadows8);
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .btnDiv {
@@ -48,6 +44,8 @@ form {
 }
 output {
   margin: 20px;
+  color: black;
+  font-weight: bold;
 }
 
 dialog {
@@ -57,41 +55,11 @@ dialog {
   overflow-y: scroll;
 }
 
-#diag {
-  padding: 0px;
-  margin: 0px;
-}
-
-.blueBisque {
-  color: midnightblue;
-  background-color: bisque;
-  text-align: center;
-  margin: 0px;
-}
-
-.accepted {
-  color: midnightblue;
-  background-color: lightcyan;
-  font-size: 2em;
-  font-weight: 300;
-}
-
 .denied {
   color: red;
   font-size: 2em;
   font-weight: 300;
   background-color: lightgrey;
-}
-
-footer {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 20px;
-  padding: 10px;
-}
-
-input {
-  margin: 10px;
 }
 
 button {
@@ -138,9 +106,6 @@ button::active::before {
 button::hover::before {
   opacity: 0.5;
 }
-button::hover {
-  cursor: pointer;
-}
 
 button.primary {
   color: var(--primary-main);
@@ -150,56 +115,4 @@ button.primary {
 button.accent {
   color: var(--secondary-main);
   background-color: var(--primary-contrast-text);
-}
-
-button.raised {
-  box-shadow: var(--shadows2);
-}
-button.raised::active {
-  box-shadow: var(--shadows8);
-}
-
-button.disabled {
-  color: rgba(0, 0, 0, 0.26);
-  cursor: default;
-  pointer-events: none;
-  box-shadow: var(--shadows8);
-}
-
-button.raised.disabed {
-  background-color: rgba(0, 0, 0, 0.12);
-}
-
-button.fullWidth {
-  text-align: center;
-  width: 100%;
-}
-
-button.ripple {
-  position: relative;
-  overflow: hidden;
-  transform: translate3d(0, 0, 0);
-}
-
-button.ripple::after {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  background-image: radial-gradient(circle, #000 10%, transparent 10%);
-  background-repeat: no-repeat;
-  background-position: 50%;
-  transform: scale(10, 10);
-  opacity: 0;
-  transition: transform 0.5s, opacity 1s;
-}
-
-button.ripple::active::after {
-  transform: scale(0, 0);
-  opacity: 0.2;
-  transition: 0s;
 }

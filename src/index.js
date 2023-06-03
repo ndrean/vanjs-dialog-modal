@@ -9,7 +9,7 @@ import button from "./button.js";
 context.van = van;
 context.objStr = objstr;
 
-const { br, output, span, div } = van.tags;
+const { br, output, span, div, p } = van.tags;
 
 const pwd = van.state(""),
   slide = van.state(10),
@@ -43,7 +43,7 @@ const status = (ctx) => (state) => {
       {
         class: objstr({
           [isTrue]: value === true,
-          [isFalse]: value === false,
+          [isFalse]: value !== true,
         }),
       },
       content(value)
@@ -84,5 +84,6 @@ van.add(
   ),
   AgreementModal(),
   br(),
-  Status(agreement)
+  Status(agreement),
+  p(agreement)
 );
