@@ -1,5 +1,6 @@
 import van from "./van-0.11.10.min.js";
 import Form from "./form.js";
+import { setOutput } from "./index.js";
 
 const formContent =
   (ctx) =>

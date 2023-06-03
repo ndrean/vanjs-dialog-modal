@@ -1,7 +1,6 @@
 import van from "./van-0.11.10.min.js";
 import objstr from "./obj-str.js";
 import Dialog from "./dialog.js";
-import Form from "./form.js";
 import context from "./context.js";
 import contentD1 from "./contentDialog1.js";
 import formContent from "./contentDailog2.js";
@@ -47,6 +46,11 @@ const myFirstDialog = (ctx = {}) =>
 // --> 1st dialog
 
 // <-- 2d dialog: form with output
+const setOutput = (val) => {
+  const output = document.getElementsByTagName("output")[0];
+  output.value = val;
+};
+
 const btnOpenForm = (ctx) => (id) =>
   button(
     {
@@ -57,11 +61,6 @@ const btnOpenForm = (ctx) => (id) =>
     },
     "open"
   );
-
-const setOutput = (val) => {
-  const output = document.getElementsByTagName("output")[0];
-  output.value = val;
-};
 
 const myFormDialog = (ctx = {}) =>
   Dialog({
@@ -86,3 +85,5 @@ van.add(
   br(),
   output()
 );
+
+export { setOutput };
