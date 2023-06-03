@@ -1,12 +1,22 @@
-const contentD1 = ({ ctx, ...props }) => {
+import footer from "./footer";
+import header from "./header";
+import button from "./button";
+
+const contentAgreement = ({ ctx, ...props }) => {
   const { van, classes } = ctx;
-  const { article, label, input, div, button, footer, header, h1 } = van.tags;
+  const { article, label, input, div } = van.tags;
   const { id, idContent, states } = props;
   const [state, ...rest] = states;
+  const Footer = footer(ctx);
+  const Header = header(ctx);
+  const Button = button(ctx);
 
   const btnClose = (id, state) =>
-    button(
+    Button(
       {
+        accent: true,
+        raised: true,
+        ripple: true,
         onclick: () => {
           state.val = false;
           document.getElementById(id).close();
@@ -16,8 +26,10 @@ const contentD1 = ({ ctx, ...props }) => {
     );
 
   const btnAccept = (id) =>
-    button(
+    Button(
       {
+        primary: true,
+        raised: true,
         onclick: () => {
           document.getElementById(id).close();
         },
@@ -27,7 +39,7 @@ const contentD1 = ({ ctx, ...props }) => {
 
   return div(
     { id: idContent },
-    header(h1({ class: classes.h1 }, "My beauty")),
+    Header({}, "My beauty"),
     article(
       label(
         input({
@@ -40,8 +52,8 @@ const contentD1 = ({ ctx, ...props }) => {
         "I agree with the terms and conditions"
       )
     ),
-    footer({ class: classes.footer }, btnClose(id, state), btnAccept(id))
+    Footer({}, btnClose(id, state), btnAccept(id))
   );
 };
 
-export default contentD1;
+export default contentAgreement;

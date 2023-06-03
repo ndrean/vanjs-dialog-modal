@@ -8,6 +8,7 @@ const context = {
     isTrue: "accepted",
     isFalse: "denied",
     footer: "footer",
+    btnDiv: "btnDiv",
   },
 };
 

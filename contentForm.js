@@ -1,3 +1,6 @@
+import button from "./button";
+import footer from "./footer";
+
 const setOutput = (val) => {
   const output = document.getElementsByTagName("output")[0];
   output.value = val;
@@ -5,8 +8,10 @@ const setOutput = (val) => {
 
 const contentForm = ({ ctx, ...props }) => {
   const { van } = ctx;
-  const { form, label, input, br, button, p } = van.tags;
+  const { form, label, input, br, p } = van.tags;
   const setDisplay = van.state("text");
+  const Button = button(ctx);
+  const Footer = footer(ctx);
 
   const {
     id,
@@ -32,7 +37,7 @@ const contentForm = ({ ctx, ...props }) => {
       onsubmit: handleSubmit,
     },
     label(
-      "enter your name",
+      "Enter your password",
       input({
         id: "password",
         name: "password",
@@ -42,8 +47,9 @@ const contentForm = ({ ctx, ...props }) => {
       })
     ),
     br(),
+
     label(
-      "show password",
+      "Show password",
       input({
         id: "pwdbox",
         name: "pwdbox",
@@ -56,10 +62,8 @@ const contentForm = ({ ctx, ...props }) => {
       })
     ),
     br(),
-    p(state1),
-    br(),
     label(
-      "slider",
+      "Test the slider",
       input({
         id: "slide",
         type: "range",
@@ -71,10 +75,10 @@ const contentForm = ({ ctx, ...props }) => {
       })
     ),
     br(),
-    p(state2),
+    p("You selected: ", state2),
     br(),
-    button("submit")
+    Footer({}, Button({ primary: true, raised: true }, "Submit"))
   );
 };
 
-export { contentForm, setOutput };
+export default contentForm;

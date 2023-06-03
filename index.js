@@ -1,20 +1,32 @@
 import van from "./van-0.11.11.min.js";
 import context from "./context.js";
 import objstr from "./obj-str.js";
-import Dialog from "./dialog.js";
-import { contentForm, setOutput } from "./contentForm.js";
-import contentD1 from "./contentDialog1.js";
+import dialog from "./dialog.js";
+import contentForm from "./contentForm.js";
+import contentAgreement from "./contentAgreement.js";
+import button from "./button.js";
 
 context.van = van;
-const { p, button, br, output, span } = van.tags;
+context.objStr = objstr;
+
+const { br, output, span, div } = van.tags;
 
 const pwd = van.state(""),
   slide = van.state(10),
   agreement = van.state(false);
 
-// <-- 1st dialog: checkbox accept conditions
-const btnShow = (ctx) => (id) =>
-  button({ onclick: () => document.getElementById(id).showModal() }, "open");
+const show = (ctx) => {
+  const Button = button(ctx);
+  return ({ id, label }) =>
+    Button(
+      {
+        primary: true,
+        raised: true,
+        onclick: () => document.getElementById(id).showModal(),
+      },
+      label
+    );
+};
 
 const status = (ctx) => (state) => {
   const content = (r) =>
@@ -39,50 +51,40 @@ const status = (ctx) => (state) => {
   );
 };
 
-function myFirstDialog(ctx) {
-  return Dialog({
-    ctx,
-    id: "d1",
-    idContent: "c1",
-    inside: "inside1",
-    states: [agreement],
-    content: contentD1,
-  });
-}
-// --> 1st dialog
+const Show = show(context);
+const Status = status(context);
+const Dialog = dialog(context);
 
-// <-- 2d dialog: form with output
-const btnOpenForm = (ctx) => (id) =>
-  button(
-    {
-      onclick: () => {
-        setOutput("");
-        document.getElementById(id).showModal();
-      },
-    },
-    "open"
-  );
+const AgreementModal = Dialog({
+  id: "d1",
+  idContent: "c1",
+  inside: "inside1",
+  states: [agreement],
+  content: contentAgreement,
+});
 
-function myFormDialog(ctx) {
-  return Dialog({
-    ctx,
-    id: "d2",
-    idContent: "f1",
-    inside: "inside2",
-    states: [pwd, slide],
-    content: contentForm,
-  });
-}
+const FormModal = Dialog({
+  id: "d2",
+  idContent: "f1",
+  inside: "inside2",
+  states: [pwd, slide],
+  content: contentForm,
+});
 
 van.add(
   document.body,
-  btnOpenForm(context)("d2"),
-  myFormDialog(context),
+  div(
+    { class: context.classes.btnDiv },
+    Show({ id: "d2", label: "Open the form" }),
+    FormModal(),
+    output({ id: "output" })
+  ),
   br(),
-  output(),
+  div(
+    { class: context.classes.btnDiv },
+    Show({ id: "d1", label: "Agreement check" })
+  ),
+  AgreementModal(),
   br(),
-  btnShow(context)("d1"),
-  myFirstDialog(context),
-  p(agreement),
-  status(context)(agreement)
+  Status(agreement)
 );
