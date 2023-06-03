@@ -3,74 +3,18 @@ import objstr from "./obj-str.js";
 import Dialog from "./dialog.js";
 import Form from "./form.js";
 import context from "./context.js";
+import contentD1 from "./contentDialog1.js";
+import formContent from "./contentDailog2.js";
 
-const {
-  div,
-  p,
-  button,
-  label,
-  input,
-  footer,
-  header,
-  article,
-  h1,
-  br,
-  output,
-  span,
-} = van.tags;
+const { p, button, br, output, span } = van.tags;
 
 const pwd = van.state(""),
   slide = van.state(10),
   agreement = van.state(false);
 
 // <-- 1st dialog: checkbox accept conditions
-const btnClose = (id, state) =>
-  button(
-    {
-      onclick: () => {
-        state.val = false;
-        document.getElementById(id).close();
-      },
-    },
-    "close"
-  );
-
-const btnAccept = (id) =>
-  button(
-    {
-      onclick: () => document.getElementById(id).close(),
-    },
-    "Accept"
-  );
-
-const btnShow = (id) =>
+const btnShow = (ctx) => (id) =>
   button({ onclick: () => document.getElementById(id).showModal() }, "open");
-
-const Header = (ctx) => (content) =>
-  header(h1({ class: ctx.classes.h1 }, content));
-
-const content =
-  (ctx) =>
-  ({ id, idContent, states }) => {
-    const [state, ...rest] = states;
-    return div(
-      { id: idContent },
-      Header(ctx)("My beauty"),
-      article(
-        label(
-          input({
-            type: "checkbox",
-            id: "agreement",
-            name: "agreement",
-            checked: state,
-            onchange: (e) => (state.val = e.target.checked),
-          }),
-          "I agree with the terms and conditions"
-        )
-      ),
-      footer(btnClose(id, state), btnAccept(id))
-    );
-  };
 
 const status = (ctx) => (state) => {
   const content = (r) =>
@@ -91,19 +35,19 @@ const status = (ctx) => (state) => {
   );
 };
 
-const myFirstDialog = (context = {}) =>
+const myFirstDialog = (ctx = {}) =>
   Dialog({
     id: "d1",
     idContent: "c1",
     inside: "inside1",
     states: [agreement],
-    content: content(context),
+    content: contentD1(ctx),
   });
 
 // --> 1st dialog
 
 // <-- 2d dialog: form with output
-const btnOpenForm = (id) =>
+const btnOpenForm = (ctx) => (id) =>
   button(
     {
       onclick: () => {
@@ -118,21 +62,8 @@ const setOutput = (val) => {
   const output = document.getElementsByTagName("output")[0];
   output.value = val;
 };
-const formContent =
-  (ctxt) =>
-  ({ id, idContent, states }) => {
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      const formData = new FormData(e.target);
-      const data = Object.fromEntries(formData);
-      setOutput(JSON.stringify(data, null, "\t"));
-      document.getElementById(idContent).reset();
-      document.getElementById(id).close();
-    };
-    return Form({ id, idContent, states, handleSubmit });
-  };
 
-const myFormDialog = (ctx) =>
+const myFormDialog = (ctx = {}) =>
   Dialog({
     id: "d2",
     idContent: "f1",
@@ -145,12 +76,13 @@ const myFormDialog = (ctx) =>
 
 van.add(
   document.body,
-  btnShow("d1"),
+  btnShow(context)("d1"),
   myFirstDialog(context),
   p(agreement),
   status(context)(agreement),
   br(),
-  btnOpenForm("d2"),
-  myFormDialog(),
+  btnOpenForm(context)("d2"),
+  myFormDialog(context),
+  br(),
   output()
 );

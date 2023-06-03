@@ -2,7 +2,6 @@ import van from "./van-0.11.10.min.js";
 const { div, dialog } = van.tags;
 
 const Dialog = ({ id, idContent, inside, states = [], content }) => {
-  //   const [state, ...rest] = states;
   const inner = () => content({ id, idContent, states });
   const dialogBox = dialog({ id }, div({ id: inside }, inner()));
 
