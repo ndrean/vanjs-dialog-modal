@@ -58,7 +58,6 @@ const Dialog = dialog(context);
 const AgreementModal = Dialog({
   id: "d1",
   idContent: "c1",
-  inside: "inside1",
   states: [agreement],
   content: contentAgreement,
 });
@@ -66,7 +65,6 @@ const AgreementModal = Dialog({
 const FormModal = Dialog({
   id: "d2",
   idContent: "f1",
-  inside: "inside2",
   states: [pwd, slide],
   content: contentForm,
 });

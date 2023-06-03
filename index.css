@@ -49,12 +49,6 @@ form {
 output {
   margin: 20px;
 }
-#inside1,
-#inside2 {
-  padding: 0px;
-  height: max-content;
-  width: max-content;
-}
 
 dialog {
   border: none;
