@@ -3,7 +3,7 @@ import objstr from "./obj-str.js";
 import Dialog from "./dialog.js";
 import context from "./context.js";
 import contentD1 from "./contentDialog1.js";
-import formContent from "./contentDailog2.js";
+import formContent from "./contentForm.js";
 
 const { p, button, br, output, span } = van.tags;
 
