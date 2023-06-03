@@ -1,0 +1,15 @@
+#inside1,
+#inside2 {
+  padding: 10px;
+  height: max-content;
+  width: max-content;
+}
+
+#diag {
+  padding: 0px;
+  margin: 0px;
+}
+
+.blue {
+  color: midnightblue;
+}
