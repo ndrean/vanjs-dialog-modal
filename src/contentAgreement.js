@@ -30,9 +30,7 @@ const contentAgreement = ({ ctx, ...props }) => {
       {
         primary: true,
         raised: true,
-        onclick: () => {
-          document.getElementById(id).close();
-        },
+        onclick: () => document.getElementById(id).close(),
       },
       "Accept"
     );
@@ -41,6 +39,7 @@ const contentAgreement = ({ ctx, ...props }) => {
     { id: idContent },
     Header({}, "My beauty"),
     article(
+      { style: "padding:20px;" },
       label(
         input({
           type: "checkbox",
