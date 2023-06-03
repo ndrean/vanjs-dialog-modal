@@ -4,7 +4,7 @@ export default function (ctx) {
 
   return function Dialog(props) {
     const { id, idContent, states = [], content } = props;
-    const children = content({ van, ctx, id, idContent, states });
+    const children = content({ ctx, id, idContent, states });
     const dialogBox = dialog({ id }, children);
     dialogBox.addEventListener("click", (e) => {
       if (e.target.id === id) {
