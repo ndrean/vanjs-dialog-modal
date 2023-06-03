@@ -10,6 +10,19 @@
   margin: 0px;
 }
 
-.blue {
+.blueBisque {
   color: midnightblue;
+  background-color: bisque;
+  text-align: center;
+}
+
+.accepted {
+  color: midnightblue;
+  background-color: lightcyan;
+}
+
+.denied {
+  color: red;
+  font-size: bold;
+  background-color: lightgrey;
 }

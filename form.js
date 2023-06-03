@@ -1,17 +1,7 @@
 import van from "./van-0.11.10.min.js";
 const { p, button, label, form, input, br } = van.tags;
 
-//   label(
-//     label,
-//     input({
-//       id: id,
-//       name: name,
-//       type: type,
-//       value: state,
-//       onchange: (e) => (state.val = e.target.value),
-//     })
-//   );
-
+//  2 inputs [password, slider] and 1 checkbox to display hidden password
 const Form = ({ id, idContent, states, handleSubmit }) => {
   const [state1, state2] = states;
   return form(
