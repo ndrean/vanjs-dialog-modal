@@ -2,6 +2,7 @@ import van from "./van-0.11.11.min.js";
 import context from "./context.js";
 import dialog, { show } from "./dialog.js";
 import contentAgreement from "./contentAgreement.js";
+import objStr from "./obj-str.js";
 
 const { div, br, span } = van.tags;
 const agreement = van.state(null);
@@ -25,7 +26,7 @@ const status = (ctx) => (state) => {
   };
 
   return van.bind(state, (value) =>
-    span(
+    div(
       {
         class: value ? ctx.classes.isTrue : ctx.classes.isFalse,
       },
@@ -36,12 +37,18 @@ const status = (ctx) => (state) => {
 
 const Status = status(context);
 
-const agreementPage = () =>
+const agreementPage = (ctx) =>
   div(
-    div(
-      { class: context.classes.btnDiv },
-      Show({ id: "d1", label: "Check the agreements" })
-    ),
+    {
+      class: ctx.objStr({
+        [ctx.classes.layout]: true,
+        [ctx.classes.flexDirCol]: true,
+      }),
+    },
+    Show({ id: "d1", label: "Check the agreements" }),
+    // div(
+    //   { class: context.classes.btnDiv },
+    // ),
     AgreementModal(),
     br(),
     Status(agreement)

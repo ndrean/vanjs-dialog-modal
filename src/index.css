@@ -81,6 +81,17 @@ dialog {
   margin: 0px;
 }
 
+#layout,
+.layout {
+  display: flex;
+  margin-top: 10px;
+  justify-content: center;
+}
+
+.flex-dir-col {
+  flex-direction: column;
+}
+
 form {
   padding: 20px;
   border-radius: 10px;

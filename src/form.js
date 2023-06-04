@@ -20,10 +20,16 @@ const FormModal = Dialog({
 
 const formPage = (ctx) =>
   div(
-    div(
-      { class: context.classes.btnDiv },
-      Show({ id: "d2", label: "Enter you credentials" })
-    ),
+    {
+      class: ctx.objStr({
+        [ctx.classes.layout]: true,
+        [ctx.classes.flexDirCol]: true,
+      }),
+    },
+    Show({ id: "d2", label: "Enter you credentials" }),
+    // div(
+    //   { class: context.classes.btnDiv },
+    // ),
     FormModal(),
     br(),
     output({ id: "output" })

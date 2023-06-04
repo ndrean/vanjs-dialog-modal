@@ -8,8 +8,6 @@ import homePage from "./home.js";
 context.van = van;
 context.objStr = objstr;
 
-const { nav, a, div, hr } = van.tags;
-
 const handleNav = (e) => {
   e.preventDefault();
   window.onpopstate = handlePopstate(e.target.pathname);
@@ -27,7 +25,7 @@ const navbar = (ctx) => {
   const { van, classes } = ctx;
   const isActive = van.state();
   const HomePage = homePage(ctx);
-  const { div, nav, a, hr, h1 } = van.tags;
+  const { div, nav, a, hr } = van.tags;
   return div(
     nav(
       { class: classes.nav },
@@ -43,14 +41,11 @@ const navbar = (ctx) => {
       a({ class: "", href: "/form", onclick: handleNav }, "Form")
     ),
     hr(),
-    div(
-      { id: "layout", style: "display:flex;justify-content:center;" },
-      HomePage
-    )
+    div({ id: "layout", class: classes.layout }, HomePage)
   );
 };
 
 const Navbar = navbar(context);
 van.add(document.body, Navbar);
 
-export default navbar;
+// export default navbar;

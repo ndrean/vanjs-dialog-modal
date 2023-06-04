@@ -7,7 +7,7 @@ const setOutput = (val) => {
 };
 
 const contentForm = ({ ctx, ...props }) => {
-  const { van } = ctx;
+  const { van, classes } = ctx;
   const { form, label, input, br, p } = van.tags;
   const setDisplay = van.state("password");
   const Button = button(ctx);

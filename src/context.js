@@ -20,6 +20,8 @@ const context = {
     accent: "accent",
     ripple: "ripple",
     disabled: "disabled",
+    layout: "layout",
+    flexDirCol: "flex-dir-col",
   },
 };
 
