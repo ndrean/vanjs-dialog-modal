@@ -1,4 +1,4 @@
-import button from "./button";
+import button from "../button/button";
 import footer from "./footer";
 
 const setOutput = (val) => {
@@ -43,6 +43,7 @@ const contentForm = ({ ctx, ...props }) => {
         name: "password",
         type: setDisplay,
         value: state1,
+        autocomplete: "current-password",
         onchange: (e) => (state1.val = e.target.value),
       })
     ),

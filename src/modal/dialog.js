@@ -1,3 +1,5 @@
+import button from "../button/button";
+
 export default function (ctx) {
   const { van } = ctx;
   const { dialog } = van.tags;
@@ -17,3 +19,19 @@ export default function (ctx) {
     return () => dialogBox;
   };
 }
+
+const show = (ctx) => {
+  const Button = button(ctx);
+  return ({ id, label }) =>
+    Button(
+      {
+        primary: true,
+        raised: true,
+        ripple: true,
+        onclick: () => document.getElementById(id).showModal(),
+      },
+      label
+    );
+};
+
+export { show };

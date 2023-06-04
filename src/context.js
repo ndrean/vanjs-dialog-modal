@@ -11,6 +11,8 @@ const context = {
     isFalse: "denied",
     footer: "footer",
     btnDiv: "btnDiv",
+    footer: "footer",
+    nav: "nav",
     left: "left",
     fullWidth: "fullWidth",
     raised: "raised",
@@ -18,6 +20,10 @@ const context = {
     accent: "accent",
     ripple: "ripple",
     disabled: "disabled",
+    layout: "layout",
+    flexDirCol: "flex-dir-col",
+    home: "home",
+    linkNav: "linkNav",
   },
 };
 

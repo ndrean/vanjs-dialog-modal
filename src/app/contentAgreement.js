@@ -1,6 +1,6 @@
 import footer from "./footer";
 import header from "./header";
-import button from "./button";
+import button from "../button/button";
 
 const contentAgreement = ({ ctx, ...props }) => {
   const { van, classes } = ctx;
@@ -35,7 +35,7 @@ const contentAgreement = ({ ctx, ...props }) => {
     );
 
   return div(
-    { id: idContent },
+    { id: idContent, classes: classes.layout },
     Header({}, "Check this out! "),
     article(
       { style: "padding:20px;" },
