@@ -11,6 +11,8 @@ const context = {
     isFalse: "denied",
     footer: "footer",
     btnDiv: "btnDiv",
+    footer: "footer",
+    nav: "nav",
     left: "left",
     fullWidth: "fullWidth",
     raised: "raised",

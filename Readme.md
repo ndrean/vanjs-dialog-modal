@@ -4,6 +4,6 @@ Dialog modal component with [Van.js](https://vanjs.org/), following [this model]
 
 > To enable the "click-out", you need to pass an ID to the dialog.
 
-No CSS in JS.
-
-Bundle with Vite: 2.4k + CSS ()
+- No CSS in JS.
+- The routing is powered by [Universal Router](https://github.com/kriasoft/universal-router)
+- Bundle with Vite: 4.7k + CSS ()

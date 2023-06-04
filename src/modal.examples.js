@@ -15,25 +15,27 @@ const pwd = van.state(""),
   slide = van.state(10),
   agreement = van.state(false);
 
-const show = (ctx) => {
-  const Button = button(ctx);
-  return ({ id, label }) =>
-    Button(
-      {
-        primary: true,
-        raised: true,
-        ripple: true,
-        onclick: () => document.getElementById(id).showModal(),
-      },
-      label
-    );
-};
+// modal opener
+// const show = (ctx) => {
+//   const Button = button(ctx);
+//   return ({ id, label }) =>
+//     Button(
+//       {
+//         primary: true,
+//         raised: true,
+//         ripple: true,
+//         onclick: () => document.getElementById(id).showModal(),
+//       },
+//       label
+//     );
+// };
 
 // const test = (ctx) => {
 //   const Button = button(ctx);
 //   return Button({ primary: true, ripple: true }, "okidoki");
 // };
 
+// display agreement acceptance or not
 const status = (ctx) => (state) => {
   const content = (r) =>
     r
@@ -68,6 +70,16 @@ const FormModal = Dialog({
   content: contentForm,
 });
 
+const Check = () =>
+  div(
+    div(
+      { class: context.classes.btnDiv },
+      Show({ id: "d2", label: "Open the form" })
+    ),
+    FormModal(),
+    output({ id: "output" })
+  );
+/*
 van.add(
   document.body,
   div(
@@ -85,3 +97,7 @@ van.add(
   br(),
   Status(agreement)
 );
+*/
+
+export default Check;
+export { Show, FormModal, AgreementModal };
