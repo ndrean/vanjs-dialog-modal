@@ -123,10 +123,10 @@ form {
   box-shadow: var(--shadows8);
 }
 
-#diag {
+/* #diag {
   padding: 0px;
   margin: 0px;
-}
+} */
 
 .blueBisque {
   color: midnightblue;

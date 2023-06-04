@@ -9,6 +9,7 @@ const context = {
     isFalse: "denied",
     footer: "footer",
     btnDiv: "btnDiv",
+    left: "left",
   },
 };
 
