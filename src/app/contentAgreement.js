@@ -1,6 +1,6 @@
 import footer from "./footer";
 import header from "./header";
-import button from "./button";
+import button from "../button/button";
 
 const contentAgreement = ({ ctx, ...props }) => {
   const { van, classes } = ctx;

@@ -1,4 +1,4 @@
-import button from "./button";
+import button from "../button/button";
 import footer from "./footer";
 
 const setOutput = (val) => {
@@ -7,7 +7,7 @@ const setOutput = (val) => {
 };
 
 const contentForm = ({ ctx, ...props }) => {
-  const { van, classes } = ctx;
+  const { van } = ctx;
   const { form, label, input, br, p } = van.tags;
   const setDisplay = van.state("password");
   const Button = button(ctx);

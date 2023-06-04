@@ -1,4 +1,4 @@
-import button from "./button";
+import button from "../button/button";
 
 export default function (ctx) {
   const { van } = ctx;

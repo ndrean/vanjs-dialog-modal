@@ -1,23 +1,9 @@
-import van from "./van-0.11.11.min.js";
-import context from "./context.js";
-import dialog, { show } from "./dialog.js";
+import dialog, { show } from "../modal/dialog.js";
 import contentAgreement from "./contentAgreement.js";
-import objStr from "./obj-str.js";
-
-const { div, br, span } = van.tags;
-const agreement = van.state(null);
-
-const Show = show(context);
-const Dialog = dialog(context);
-
-const AgreementModal = Dialog({
-  id: "d1",
-  idContent: "c1",
-  states: [agreement],
-  content: contentAgreement,
-});
 
 const status = (ctx) => (state) => {
+  const { van } = ctx;
+  const { div } = van.tags;
   const content = (r) => {
     if (r === null) return "Please check the terms and conditions";
     return r
@@ -35,10 +21,25 @@ const status = (ctx) => (state) => {
   );
 };
 
-const Status = status(context);
+const agreementPage = (ctx) => {
+  const { van } = ctx;
+  const { div, br } = van.tags;
 
-const agreementPage = (ctx) =>
-  div(
+  const agreement = van.state(null);
+
+  const Show = show(ctx);
+  const Dialog = dialog(ctx);
+
+  const AgreementModal = Dialog({
+    id: "d1",
+    idContent: "c1",
+    states: [agreement],
+    content: contentAgreement,
+  });
+
+  const Status = status(ctx);
+
+  return div(
     {
       class: ctx.objStr({
         [ctx.classes.layout]: true,
@@ -46,12 +47,10 @@ const agreementPage = (ctx) =>
       }),
     },
     Show({ id: "d1", label: "Check the agreements" }),
-    // div(
-    //   { class: context.classes.btnDiv },
-    // ),
     AgreementModal(),
     br(),
     Status(agreement)
   );
+};
 
 export default agreementPage;

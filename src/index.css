@@ -35,7 +35,7 @@ body {
   font-family: sans-serif;
   scroll-behavior: smooth;
   color: midnightblue;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .btnDiv {
@@ -91,6 +91,40 @@ dialog {
 .flex-dir-col {
   flex-direction: column;
 }
+
+.linkNav {
+  text-decoration: none;
+  background-color: #fff;
+  color: midnightblue;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.linkNav:hover {
+  background-color: bisque;
+}
+
+.linkNav.active {
+  background-color: bisque;
+}
+.linkNav[aria-current="page"] {
+  background-color: bisque;
+}
+
+/* .home {
+  position: relative;
+} 
+ .home::after {
+  content: "";
+  background-image: url("./vanjs.svg");
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.75;
+} */
 
 form {
   padding: 20px;
@@ -154,10 +188,10 @@ button::before {
   content: "";
 }
 
-button::active::before {
+button:active::before {
   opacity: 1;
 }
-button::hover::before {
+button:hover::before {
   opacity: 0.5;
 }
 
@@ -221,7 +255,7 @@ button.ripple::after {
   transition: transform 0.5s, opacity 1s;
 }
 
-button.ripple::active::after {
+button.ripple:active::after {
   transform: scale(0, 0);
   opacity: 0.2;
   transition: 0s;

@@ -1,5 +1,6 @@
 import UniversalRouter from "universal-router";
-import context from "./context";
+import context from "../context";
+
 const routes = [
   {
     path: "/",
@@ -29,4 +30,4 @@ const routes = [
 ];
 
 const router = new UniversalRouter(routes, { context });
-export { router };
+export default router;

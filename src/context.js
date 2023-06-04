@@ -22,6 +22,8 @@ const context = {
     disabled: "disabled",
     layout: "layout",
     flexDirCol: "flex-dir-col",
+    home: "home",
+    linkNav: "linkNav",
   },
 };
 
