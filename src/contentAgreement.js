@@ -16,7 +16,6 @@ const contentAgreement = ({ ctx, ...props }) => {
       {
         accent: true,
         raised: true,
-        ripple: true,
         onclick: () => {
           state.val = false;
           document.getElementById(id).close();
@@ -37,7 +36,7 @@ const contentAgreement = ({ ctx, ...props }) => {
 
   return div(
     { id: idContent },
-    Header({}, "My beauty"),
+    Header({}, "Check this out! "),
     article(
       { style: "padding:20px;" },
       label(

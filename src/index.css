@@ -46,6 +46,7 @@ output {
   margin: 20px;
   color: black;
   font-weight: bold;
+  font-size: 1.5em;
 }
 
 dialog {
@@ -57,9 +58,44 @@ dialog {
 
 .denied {
   color: red;
-  font-size: 2em;
-  font-weight: 300;
-  background-color: lightgrey;
+  font-size: 1.5em;
+  font-weight: 500;
+  background-color: white;
+  padding: 1em;
+  border-radius: 20px;
+}
+
+.accepted {
+  color: midnightblue;
+  background-color: lightcyan;
+  font-size: 1.5em;
+  font-weight: 500;
+  padding: 1em;
+  border-radius: 20px;
+}
+
+.blueBisque {
+  color: midnightblue;
+  background-color: bisque;
+  text-align: center;
+  margin: 0px;
+}
+
+form {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: var(--shadows8);
+}
+
+footer {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+input {
+  margin: 10px;
 }
 
 button {
@@ -115,42 +151,6 @@ button.primary {
 button.accent {
   color: var(--secondary-main);
   background-color: var(--primary-contrast-text);
-}
-
-form {
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: var(--shadows8);
-}
-
-/* #diag {
-  padding: 0px;
-  margin: 0px;
-} */
-
-.blueBisque {
-  color: midnightblue;
-  background-color: bisque;
-  text-align: center;
-  margin: 0px;
-}
-
-.accepted {
-  color: midnightblue;
-  background-color: lightcyan;
-  font-size: 2em;
-  font-weight: 300;
-}
-
-footer {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 20px;
-  padding: 10px;
-}
-
-input {
-  margin: 10px;
 }
 
 button::hover {

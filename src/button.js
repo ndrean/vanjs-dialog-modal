@@ -1,7 +1,7 @@
 import "./index.css";
 
 export default function (ctx) {
-  const { van, objStr } = ctx;
+  const { van, objStr, classes } = ctx;
   const { button } = van.tags;
 
   return function Button(props, ...children) {
@@ -19,12 +19,12 @@ export default function (ctx) {
     return button(
       {
         class: objStr({
-          fullWidth,
-          disabled,
-          raised,
-          ripple,
-          primary,
-          accent,
+          [classes.fullWidth]: fullWidth,
+          [classes.disabled]: disabled,
+          [classes.raised]: raised,
+          [classes.primary]: primary,
+          [classes.ripple]: ripple,
+          [classes.accent]: accent,
         }),
         ...otherProps,
       },

@@ -22,11 +22,17 @@ const show = (ctx) => {
       {
         primary: true,
         raised: true,
+        ripple: true,
         onclick: () => document.getElementById(id).showModal(),
       },
       label
     );
 };
+
+// const test = (ctx) => {
+//   const Button = button(ctx);
+//   return Button({ primary: true, ripple: true }, "okidoki");
+// };
 
 const status = (ctx) => (state) => {
   const content = (r) =>
@@ -34,17 +40,10 @@ const status = (ctx) => (state) => {
       ? "I agreed with the terms and conditions"
       : "I denied the terms and conditions";
 
-  const {
-    classes: { isTrue, isFalse },
-  } = ctx;
-
   return van.bind(state, (value) =>
     span(
       {
-        class: objstr({
-          [isTrue]: value === true,
-          [isFalse]: value !== true,
-        }),
+        class: value ? ctx.classes.isTrue : ctx.classes.isFalse,
       },
       content(value)
     )

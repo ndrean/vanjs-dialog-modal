@@ -1,3 +1,5 @@
+import "./index.css";
+
 const context = {
   theme: {
     textColor: "midnightblue",
@@ -10,6 +12,12 @@ const context = {
     footer: "footer",
     btnDiv: "btnDiv",
     left: "left",
+    fullWidth: "fullWidth",
+    raised: "raised",
+    primary: "primary",
+    accent: "accent",
+    ripple: "ripple",
+    disabled: "disabled",
   },
 };
 
