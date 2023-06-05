@@ -13,14 +13,21 @@ Mainly featuring a **Modal** component (`<Dialog>`) heavily following [this mode
 - Example with `<Select>`.
 - Global store with [Zustand](https://github.com/pmndrs/zustand)
 - No CSS in JS.
-- Bundled with Vite: 5.5k +
+- Vite bundled: 5.5k +
 
 - :exclamation: Datalist not yet available.
 
-## Live
+## Display
 
-Insert "box" in the current url
+- The build is deployed with [Surge](https://surge.sh/) at <https://van-modal.surge.sh>
 
-<https://githubbox.com/ndrean/vanjs-dialog-modal>
+- To use Codesanbox, insert "box" in the current url: <https://githubbox.com/ndrean/vanjs-dialog-modal>
 
-<https://van-modal.surge.sh>
+- The Dev mode is powered by Vite. To display on mobile on the same WIFI: server it, and open it.
+
+```bash
+npm run build
+http-server ./dist -b 0.0.0.0 -p 8080
+```
+
+and navigate with the mobile to <http://127.0.0.1:8080>
