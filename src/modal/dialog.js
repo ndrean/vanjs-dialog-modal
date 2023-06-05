@@ -16,7 +16,7 @@ export default function (ctx) {
       }
     });
 
-    return () => dialogBox;
+    return dialogBox;
   };
 }
 

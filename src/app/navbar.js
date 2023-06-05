@@ -41,32 +41,17 @@ const navbar = (ctx) => {
   return div(
     nav(
       { class: classes.nav },
+      Link({ href: "/", onclick: handleNav, name: "home" }, "Home"),
       Link(
-        {
-          href: "/",
-          onclick: handleNav,
-          name: "home",
-        },
-        "Home"
-      ),
-      Link(
-        {
-          href: "/agreement",
-          onclick: handleNav,
-          name: "agreement",
-        },
+        { href: "/agreement", onclick: handleNav, name: "agreement" },
         "Agreement"
       ),
+      Link({ href: "/form", onclick: handleNav, name: "form" }, "Form"),
       Link(
-        {
-          href: "/form",
-          onclick: handleNav,
-          name: "form",
-        },
-        "Form"
+        { href: "/selections", onclick: handleNav, name: "selection" },
+        "Selection"
       )
     ),
-
     hr(),
     div({ id: "layout", class: classes.layout }, HomePage)
   );

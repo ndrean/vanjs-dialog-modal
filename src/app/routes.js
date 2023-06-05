@@ -24,6 +24,13 @@ const routes = [
     },
   },
   {
+    path: "/selections",
+    action: async (context) => {
+      const { default: page } = await import("./selection");
+      return page(context);
+    },
+  },
+  {
     path: "(.*)",
     action: () => "Nothing there",
   },

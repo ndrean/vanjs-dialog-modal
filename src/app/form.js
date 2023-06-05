@@ -25,10 +25,7 @@ const formPage = (ctx) => {
       }),
     },
     Show({ id: "d2", label: "Enter you credentials" }),
-    // div(
-    //   { class: context.classes.btnDiv },
-    // ),
-    FormModal(),
+    FormModal,
     br(),
     output({ id: "output" })
   );

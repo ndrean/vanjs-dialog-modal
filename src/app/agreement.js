@@ -47,7 +47,7 @@ const agreementPage = (ctx) => {
       }),
     },
     Show({ id: "d1", label: "Check the agreements" }),
-    AgreementModal(),
+    AgreementModal,
     br(),
     Status(agreement)
   );
