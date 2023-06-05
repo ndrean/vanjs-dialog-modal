@@ -22,10 +22,8 @@ const status = (ctx) => (state) => {
 };
 
 const agreementPage = (ctx) => {
-  const { van } = ctx;
+  const { van, agreement } = ctx;
   const { div, br } = van.tags;
-
-  const agreement = van.state(null);
 
   const Show = show(ctx);
   const Dialog = dialog(ctx);

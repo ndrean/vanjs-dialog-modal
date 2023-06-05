@@ -1,6 +1,5 @@
 import button from "../button/button";
 import footer from "./footer";
-import useDataStore from "./store";
 
 const setOutput = (val) => {
   const output = document.getElementsByTagName("output")[0];
@@ -17,19 +16,19 @@ const contentForm = ({ ctx, ...props }) => {
   const {
     id,
     idContent,
-    states: [state1, state2],
+    states: [pwd, slide, formData],
   } = props;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData);
-    useDataStore.setState({ formData: data });
+    const fData = new FormData(e.target);
+    const data = Object.fromEntries(fData);
+    formData.val = data;
     setOutput(JSON.stringify(data, null, "\t"));
     document.getElementById(idContent).reset();
     document.getElementById(id).close();
-    state1.val = "";
-    state2.val = 10;
+    pwd.val = "";
+    slide.val = 10;
     setDisplay.val = "password";
   };
 
@@ -44,9 +43,9 @@ const contentForm = ({ ctx, ...props }) => {
         id: "password",
         name: "password",
         type: setDisplay,
-        value: state1,
+        value: pwd,
         autocomplete: "current-password",
-        onchange: (e) => (state1.val = e.target.value),
+        onchange: (e) => (pwd.val = e.target.value),
       })
     ),
     br(),
@@ -73,12 +72,12 @@ const contentForm = ({ ctx, ...props }) => {
         min: 0,
         max: 100,
         name: "slide",
-        value: state2,
-        oninput: (e) => (state2.val = e.target.value),
+        value: slide,
+        oninput: (e) => (slide.val = e.target.value),
       })
     ),
     br(),
-    p("You selected: ", state2),
+    p("You selected: ", slide),
     br(),
     Footer({}, Button({ primary: true, raised: true }, "Submit"))
   );

@@ -1,4 +1,4 @@
-import useDataStore from "./store";
+// import useDataStore from "./store";
 
 const countries = {
   Estonia: "🇪🇪",
@@ -12,7 +12,7 @@ const countries = {
 };
 
 export default (ctx) => {
-  const { van, classes } = ctx;
+  const { van, classes, selected } = ctx;
   const {
     div,
     section,
@@ -42,8 +42,8 @@ export default (ctx) => {
 
   const [options, keys] = buildList();
 
-  const selected = van.state(""),
-    optionList = van.state([]),
+  // const selected = van.state(""),
+  const optionList = van.state([]),
     selectedAuto = van.state([]),
     keyList = van.state(keys);
 
@@ -63,7 +63,7 @@ export default (ctx) => {
         value: selected,
         onchange: (e) => {
           selected.val = e.currentTarget.value.toString();
-          useDataStore.setState({ selection: selected });
+          // useDataStore.setState({ selection: selected });
         },
       },
       option({ selected: "disabled" }, "Select a country"),

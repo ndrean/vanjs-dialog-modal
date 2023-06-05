@@ -14,7 +14,6 @@
     "vite-bundle-visualizer": "^0.7.0"
   },
   "dependencies": {
-    "universal-router": "^9.1.0",
-    "zustand": "^4.3.8"
+    "universal-router": "^9.1.0"
   }
 }

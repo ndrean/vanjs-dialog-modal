@@ -1,6 +1,17 @@
 import "./index.css";
+import van from "./van-0.11.11.min.js";
+import objStr from "./obj-str.js";
+
+const selected = van.state(""),
+  agreement = van.state(false),
+  formData = van.state({});
 
 const context = {
+  van,
+  objStr,
+  selected,
+  agreement,
+  formData,
   theme: {
     textColor: "midnightblue",
     bgColor: "bisque",

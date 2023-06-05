@@ -1,9 +1,9 @@
-import { createStore } from "zustand/vanilla";
+// import { createStore } from "zustand/vanilla";
 
-const useDataStore = createStore((set) => ({
-  formData: {},
-  agreement: false,
-  selection: "",
-}));
+// const useDataStore = createStore((set) => ({
+//   formData: {},
+//   agreement: false,
+//   selection: "",
+// }));
 
-export default useDataStore;
+// export default useDataStore;

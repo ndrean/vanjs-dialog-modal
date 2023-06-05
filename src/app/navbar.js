@@ -1,14 +1,11 @@
 import van from "../van-0.11.11.min.js";
-import objstr from "../obj-str.js";
+// import objstr from "../obj-str.js";
 
 import context from "../context.js";
 import router from "./routes.js";
 import homePage from "./home.js";
 import link from "../link/link.js";
 import "../index.css";
-
-context.van = van;
-context.objStr = objstr;
 
 const navbar = (ctx) => {
   const { van, classes } = ctx;
@@ -18,6 +15,7 @@ const navbar = (ctx) => {
 
   const handleNav = (e) => {
     e.preventDefault();
+    // needed to change the url for the "active-current" selection
     history.pushState("", "", e.target.pathname);
     router.resolve(e.target.pathname).then((page) => {
       const layout = document.getElementById("layout");

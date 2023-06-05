@@ -1,7 +1,7 @@
 // source: https://github.com/lukeed/obj-str
 
-export default function (obj) {
-  var k,
+const objStr = (obj) => {
+  let k,
     cls = "";
   for (k in obj) {
     if (obj[k]) {
@@ -10,4 +10,6 @@ export default function (obj) {
     }
   }
   return cls;
-}
+};
+
+export default objStr;

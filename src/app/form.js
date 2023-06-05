@@ -2,8 +2,8 @@ import dialog, { show } from "../modal/dialog.js";
 import contentForm from "./contentForm.js";
 
 const formPage = (ctx) => {
-  const { van } = ctx;
-  const { div, br, output } = van.tags;
+  const { van, formData } = ctx;
+  const { div, br, output, p } = van.tags;
 
   const pwd = van.state(""),
     slide = van.state(10);
@@ -14,7 +14,7 @@ const formPage = (ctx) => {
     {
       id: "d2",
       idContent: "f1",
-      states: [pwd, slide],
+      states: [pwd, slide, formData],
     },
     contentForm
   );

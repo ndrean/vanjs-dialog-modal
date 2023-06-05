@@ -1,14 +1,11 @@
 import link from "../link/link";
-import useDataStore from "./store";
 import truthy from "./truthy";
 
 const homePage = (ctx) => {
-  const { van, classes } = ctx;
+  const { van, classes, agreement, formData, selected } = ctx;
   const { h2, div, br, p, hr, h4 } = van.tags;
   const Link = link(ctx);
   const Truthy = truthy(ctx);
-
-  const agreementCheck = useDataStore.getState().agreement;
 
   return div(
     { class: classes.home },
@@ -19,9 +16,9 @@ const homePage = (ctx) => {
     hr(),
     br(),
     h4("The state of the global Zustand store:"),
-    p("The agreement: ", Truthy({ checked: agreementCheck }, agreementCheck)),
-    p("The form: ", JSON.stringify(useDataStore.getState().formData)),
-    p("Your selection: ", useDataStore.getState().selection),
+    p("The agreement: ", Truthy({ checked: agreement.val }, agreement.val)),
+    p("The selection: ", JSON.stringify(selected.val)),
+    p("The form: ", JSON.stringify(formData.val)),
     br(),
     Link(
       {
