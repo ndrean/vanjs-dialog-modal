@@ -1,22 +1,4 @@
-// import { createSignal, For, createMemo } from "solid-js";
-// import { styled, css } from "solid-styled-components";
-
-// import button from "../button/button";
-
-// const Span = styled("span")`
-//   padding-left: 20px;
-// `;
-
-// const centerDiv = css`
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: center;
-//   align-items: center;
-// `;
-// const selectClass = css`
-//   width: 40%;
-//   height: 3em;
-// `;
+import useDataStore from "./store";
 
 const countries = {
   Estonia: "🇪🇪",
@@ -79,7 +61,10 @@ export default (ctx) => {
       {
         id: "country",
         value: selected,
-        onchange: (e) => (selected.val = e.currentTarget.value.toString()),
+        onchange: (e) => {
+          selected.val = e.currentTarget.value.toString();
+          useDataStore.setState({ selection: selected });
+        },
       },
       option({ selected: "disabled" }, "Select a country"),
       keys.map((country) => option({ value: country }, options[country]))

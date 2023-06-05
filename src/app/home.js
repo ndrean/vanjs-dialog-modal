@@ -21,6 +21,7 @@ const homePage = (ctx) => {
     h4("The state of the global Zustand store:"),
     p("The agreement: ", Truthy({ checked: agreementCheck }, agreementCheck)),
     p("The form: ", JSON.stringify(useDataStore.getState().formData)),
+    p("Your selection: ", useDataStore.getState().selection),
     br(),
     Link(
       {
