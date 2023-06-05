@@ -15,7 +15,7 @@ const homePage = (ctx) => {
     ),
     hr(),
     br(),
-    h4("The state of the global Zustand store:"),
+    h4("The state of the context object: "),
     p("The agreement: ", Truthy({ checked: agreement.val }, agreement.val)),
     p("The selection: ", JSON.stringify(selected.val)),
     p("The form: ", JSON.stringify(formData.val)),
