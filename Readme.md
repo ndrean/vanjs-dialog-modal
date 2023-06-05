@@ -19,6 +19,8 @@ Mainly featuring a **Modal** component (`<Dialog>`) heavily following [this mode
 
 ## Live
 
+Insert "box" in the url
+
 <https://githubbox.com/ndrean/vanjs-dialog-modal>
 
 <https://van-modal.surge.sh>
