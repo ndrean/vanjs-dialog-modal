@@ -26,7 +26,7 @@ const homePage = (ctx) => {
         target: "#",
         name: "source",
       },
-      "This work is base on this repo"
+      "This work is based on this repo"
     )
   );
 };

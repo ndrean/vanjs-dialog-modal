@@ -3,7 +3,7 @@ export default function (ctx) {
   const { a } = van.tags;
 
   return function Link(props, ...children) {
-    const { href, target, name, handleClick, state, ...otherProps } = props;
+    const { href, target, name, handleClick, ...otherProps } = props;
 
     return a(
       {
@@ -11,7 +11,7 @@ export default function (ctx) {
         href,
         target: target || "_self",
         role: "link",
-        class: objStr({ [classes.linkNav]: true, active: state }),
+        class: classes.linkNav,
         name: name,
         onclick: handleClick || (() => null),
         ...otherProps,
