@@ -14,7 +14,7 @@ const homePage = (ctx) => {
     { class: classes.home },
     h2(
       { style: "width:70vw;" },
-      "Welcome to this demo app. It is powered by Van.js, routed by Universal-Router and uses a global store managed by Zustand. "
+      "Welcome to this demo app. It is powered by VanJS, routed by Universal-Router and uses a global store managed by Zustand. "
     ),
     hr(),
     br(),

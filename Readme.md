@@ -1,6 +1,6 @@
 # Explore Van.js
 
-A [Van.js](https://vanjs.org/) powered demo app, with routing and global store. No CSS-in-JS.
+A [VanJS](https://vanjs.org/) powered demo app, with routing and global store. No CSS-in-JS.
 
 Mainly featuring a **Modal** component (`<Dialog>`) heavily following [this model](https://github.com/FredericHeem/van-kit).
 
