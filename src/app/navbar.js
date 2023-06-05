@@ -1,7 +1,3 @@
-import van from "../van-0.11.11.min.js";
-// import objstr from "../obj-str.js";
-
-import context from "../context.js";
 import router from "./routes.js";
 import homePage from "./home.js";
 import link from "../link/link.js";
@@ -55,5 +51,4 @@ const navbar = (ctx) => {
   );
 };
 
-const Navbar = navbar(context);
-van.add(document.body, Navbar);
+export default navbar;
