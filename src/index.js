@@ -5,4 +5,7 @@ import homePage from "./app/home.js";
 
 const Navbar = navbar(context);
 const HomePage = homePage(context);
+// reset the url when start (does not navigate to)
+history.pushState("/", "", "/");
+
 van.add(document.body, Navbar(HomePage));
