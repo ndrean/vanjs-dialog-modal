@@ -1,6 +1,6 @@
 # Explore Van.js
 
-A [VanJS](https://vanjs.org/) powered demo app, with routing and global store. No CSS-in-JS.
+A [VanJS](https://vanjs.org/) powered demo app, with routing. No CSS-in-JS.
 
 Mainly featuring a **Modal** component (`<Dialog>`) heavily following [this model](https://github.com/FredericHeem/van-kit).
 
@@ -11,9 +11,9 @@ Mainly featuring a **Modal** component (`<Dialog>`) heavily following [this mode
 - Navigation powered by [Universal Router](https://github.com/kriasoft/universal-router).
 - Modal (`<dialog>`) components with forms.
 - Example with `<Select>`.
-- Global store with [Zustand](https://github.com/pmndrs/zustand)
+- The state is passed into the `context`object, thus updated on each component update (new navigation page).
 - No CSS in JS.
-- Vite bundled: 5.5k +
+- Vite bundled: 5.2k +
 
 - :exclamation: Datalist not yet available.
 
