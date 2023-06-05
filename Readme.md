@@ -19,7 +19,7 @@ Mainly featuring a **Modal** component (`<Dialog>`) heavily following [this mode
 
 ## Live
 
-Insert "box" in the url
+Insert "box" in the current url
 
 <https://githubbox.com/ndrean/vanjs-dialog-modal>
 
