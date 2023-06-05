@@ -2,7 +2,7 @@ import link from "../link/link";
 
 const homePage = (ctx) => {
   const { van, classes } = ctx;
-  const { h1, div, a } = van.tags;
+  const { h1, div, br } = van.tags;
   const Link = link(ctx);
   return div(
     { class: classes.home },
@@ -10,6 +10,7 @@ const homePage = (ctx) => {
       { style: "width:70vw;" },
       "Welcome to this demo app powered by Van.js and routed by Universal-Router"
     ),
+    br(),
     Link(
       {
         href: "https://github.com/FredericHeem/van-kit",

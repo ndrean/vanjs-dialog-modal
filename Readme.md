@@ -7,7 +7,7 @@ Dialog modal component with [Van.js](https://vanjs.org/), following [this model]
 ## Features
 
 - Navigation powered by [Universal Router](https://github.com/kriasoft/universal-router).
-- Modal (Dialog) components with forms.
+- Modal (`<dialog>`) components with forms.
 - Example with `<Select>`.
 - No CSS in JS.
 - Bundled with Vite: 4.9k +
