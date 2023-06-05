@@ -4,12 +4,14 @@ export default function (ctx) {
 
   return function Link(props, ...children) {
     const { href, target, name, handleClick, state, ...otherProps } = props;
+
     return a(
       {
-        class: objStr({ [classes.linkNav]: true, active: state }),
-        href: href,
+        "aria-current": props.ariaCurrent || "",
+        href,
         target: target || "_self",
         role: "link",
+        class: objStr({ [classes.linkNav]: true, active: state }),
         name: name,
         onclick: handleClick || (() => null),
         ...otherProps,

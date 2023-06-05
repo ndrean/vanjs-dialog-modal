@@ -17,22 +17,23 @@ const contentForm = ({ ctx, ...props }) => {
     id,
     idContent,
     states: [pwd, slide, formData],
+    ref,
   } = props;
 
-  const handleSubmit = (e) => {
+  function handleSubmit(e) {
     e.preventDefault();
     const fData = new FormData(e.target);
     const data = Object.fromEntries(fData);
     formData.val = data;
     setOutput(JSON.stringify(data, null, "\t"));
-    document.getElementById(idContent).reset();
+    Form.reset();
     document.getElementById(id).close();
     pwd.val = "";
     slide.val = 10;
     setDisplay.val = "password";
-  };
+  }
 
-  return form(
+  const Form = form(
     {
       id: idContent,
       onsubmit: handleSubmit,
@@ -81,6 +82,7 @@ const contentForm = ({ ctx, ...props }) => {
     br(),
     Footer({}, Button({ primary: true, raised: true }, "Submit"))
   );
+  return Form;
 };
 
 export default contentForm;
