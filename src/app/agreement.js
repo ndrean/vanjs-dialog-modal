@@ -30,12 +30,14 @@ const agreementPage = (ctx) => {
   const Show = show(ctx);
   const Dialog = dialog(ctx);
 
-  const AgreementModal = Dialog({
-    id: "d1",
-    idContent: "c1",
-    states: [agreement],
-    content: contentAgreement,
-  });
+  const AgreementModal = Dialog(
+    {
+      id: "d1",
+      idContent: "c1",
+      states: [agreement],
+    },
+    contentAgreement
+  );
 
   const Status = status(ctx);
 

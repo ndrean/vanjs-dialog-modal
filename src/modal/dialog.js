@@ -4,17 +4,26 @@ export default function (ctx) {
   const { van } = ctx;
   const { dialog } = van.tags;
 
+  function handleClick(e, id, states, dialogBox) {
+    if (e.target.id === id) {
+      states.map((st) => (st.val = null));
+      dialogBox.close();
+    }
+  }
+
   return function Dialog(props, ...children) {
     const { id, idContent, states = [], content, ...otherProps } = props;
-    const firstContent = content({ ctx, id, idContent, states });
-    const dialogBox = dialog({ id, ...otherProps }, firstContent, children);
-
-    dialogBox.addEventListener("click", (e) => {
-      if (e.target.id === id) {
-        states.map((st) => (st.val = null));
-        dialogBox.close();
-      }
-    });
+    const [first, ...rest] = children;
+    const firstContent = first({ ctx, id, idContent, states });
+    const dialogBox = dialog(
+      {
+        id,
+        onclick: (e) => handleClick(e, id, states, dialogBox),
+        ...otherProps,
+      },
+      firstContent,
+      rest
+    );
 
     return dialogBox;
   };

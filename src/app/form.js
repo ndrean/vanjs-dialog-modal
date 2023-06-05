@@ -10,12 +10,14 @@ const formPage = (ctx) => {
 
   const Show = show(ctx);
   const Dialog = dialog(ctx);
-  const FormModal = Dialog({
-    id: "d2",
-    idContent: "f1",
-    states: [pwd, slide],
-    content: contentForm,
-  });
+  const FormModal = Dialog(
+    {
+      id: "d2",
+      idContent: "f1",
+      states: [pwd, slide],
+    },
+    contentForm
+  );
 
   return div(
     {
