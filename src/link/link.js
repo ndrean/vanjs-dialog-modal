@@ -1,5 +1,5 @@
 export default function (ctx) {
-  const { van, classes, objStr } = ctx;
+  const { van, classes } = ctx;
   const { a } = van.tags;
 
   return function Link(props, ...children) {

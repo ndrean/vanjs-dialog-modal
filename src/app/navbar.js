@@ -10,16 +10,6 @@ const navbar = (ctx) => {
 
   const curr = van.state("home");
 
-  const rmActive = (v) =>
-    document.querySelector(`a[name='${v}']`).removeAttribute("aria-current");
-
-  const addActive = (v) =>
-    document
-      .querySelector(`a[name='${v}']`)
-      .setAttribute("aria-current", "page");
-
-  let nextPage;
-
   const handleNav = (e) => {
     e.preventDefault();
     curr.val = e.target.name;
@@ -34,7 +24,7 @@ const navbar = (ctx) => {
 
   const isPage = (next, local) => (next === local ? "page" : "");
 
-  return (...children) =>
+  return (children) =>
     van.bind(curr, (v) =>
       div(
         nav(
