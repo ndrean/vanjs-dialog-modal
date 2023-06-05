@@ -1,5 +1,6 @@
 import button from "../button/button";
 import footer from "./footer";
+import useDataStore from "./store";
 
 const setOutput = (val) => {
   const output = document.getElementsByTagName("output")[0];
@@ -23,6 +24,7 @@ const contentForm = ({ ctx, ...props }) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData);
+    useDataStore.setState({ formData: data });
     setOutput(JSON.stringify(data, null, "\t"));
     document.getElementById(idContent).reset();
     document.getElementById(id).close();

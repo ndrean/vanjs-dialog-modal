@@ -111,6 +111,17 @@ dialog {
   background-color: bisque;
 }
 
+.span-pink {
+  background-color: pink;
+  padding: 0.2em;
+  border-radius: 5px;
+}
+
+.span-lightblue {
+  background-color: lightblue;
+  padding: 0.2em;
+  border-radius: 5px;
+}
 /* .home {
   position: relative;
 } 
