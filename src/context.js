@@ -24,6 +24,10 @@ const context = {
     flexDirCol: "flex-dir-col",
     home: "home",
     linkNav: "linkNav",
+    spanPink: "span-pink",
+    spanLightBlue: "span-lightblue",
+    accepted: "accepted",
+    denied: "denied",
   },
 };
 

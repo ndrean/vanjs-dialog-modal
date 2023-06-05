@@ -1,6 +1,7 @@
 import footer from "./footer";
 import header from "./header";
 import button from "../button/button";
+import useDataStore from "./store";
 
 const contentAgreement = ({ ctx, ...props }) => {
   const { van, classes } = ctx;
@@ -45,7 +46,10 @@ const contentAgreement = ({ ctx, ...props }) => {
           id: "agreement",
           name: "agreement",
           checked: state,
-          onchange: (e) => (state.val = e.target.checked),
+          onchange: (e) => {
+            state.val = e.target.checked;
+            useDataStore.setState({ agreement: e.target.checked });
+          },
         }),
         "I agree with the terms and conditions"
       )
