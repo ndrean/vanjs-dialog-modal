@@ -8,7 +8,7 @@ Mainly featuring a **Modal** component (`<Dialog>`) heavily following [this mode
 
 ## Features
 
-- Navigation powered by [Universal Router](https://github.com/kriasoft/universal-router).
+- Navigation powered by [Universal Router](https://github.com/kriasoft/universal-router) with async loading.
 - Modal (`<dialog>`) components with forms.
 - Example with `<Select>`.
 - The state is passed into the `context`object, thus updated on each component update (new navigation page).
