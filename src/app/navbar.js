@@ -8,11 +8,11 @@ const navbar = (ctx) => {
   const Link = link(ctx);
   const { div, nav, hr } = van.tags;
 
-  const curr = van.state("home");
+  const nextPage = van.state("home");
 
   const handleNav = (e) => {
     e.preventDefault();
-    curr.val = e.target.name;
+    nextPage.val = e.target.name;
     // needed to change the url for the "active-current" selection
     history.pushState("", "", e.target.pathname);
     router.resolve(e.target.pathname).then((page) => {
@@ -25,7 +25,7 @@ const navbar = (ctx) => {
   const isPage = (next, local) => (next === local ? "page" : "");
 
   return (children) =>
-    van.bind(curr, (v) =>
+    van.bind(nextPage, (v) =>
       div(
         nav(
           { class: classes.nav },
