@@ -1,5 +1,7 @@
 import router from "./routes.js";
 import link from "../link/link.js";
+import intro from "./intro";
+
 import "../index.css";
 
 const navbar = (ctx) => {
@@ -9,6 +11,7 @@ const navbar = (ctx) => {
 
   const nextPage = van.state("");
 
+  const Intro = intro(ctx);
   const handleNav = (e) => {
     e.preventDefault();
     nextPage.val = e.target.name;
@@ -16,16 +19,14 @@ const navbar = (ctx) => {
     // needed to fake the display the change of url
     history.replaceState("", "", e.target.name);
     router.resolve(e.target.pathname).then((page) => {
-      const layout = document.getElementById("layout");
-      layout.innerHTML = "";
-      van.add(layout, page());
+      document.getElementById("layout").replaceChildren(page());
     });
   };
 
   const isPage = (next, local) => (next === local ? "page" : "");
 
-  return (children) => {
-    console.log("render nav");
+  console.log("render nav");
+  return function Navbar() {
     return van.bind(nextPage, (v) =>
       div(
         nav(
@@ -67,8 +68,7 @@ const navbar = (ctx) => {
             "Selection"
           )
         ),
-        hr(),
-        div({ id: "layout", class: classes.layout }, children)
+        hr()
       )
     );
   };
