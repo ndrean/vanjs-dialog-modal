@@ -1,8 +1,9 @@
 import link from "../link/link";
+import vanLogo from "../../vanjs.svg";
 
 const intro = (ctx) => {
   const { van } = ctx;
-  const { div, br, h1, h2, hr } = van.tags;
+  const { div, br, h1, h2, hr, img } = van.tags;
   const Link = link(ctx);
   return () =>
     div(
@@ -24,6 +25,11 @@ const intro = (ctx) => {
           },
           "This work is based on this repo"
         )
+      ),
+      br(),
+      div(
+        { style: "text-align:center;" },
+        img({ src: vanLogo, alt: "VanJS", style: "height:100px;width:100px;" })
       )
     );
 };
