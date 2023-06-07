@@ -3,6 +3,13 @@ import context from "../context";
 
 const routes = [
   {
+    path: "/",
+    action: async (context) => {
+      const { default: page } = await import("./intro");
+      return page(context);
+    },
+  },
+  {
     path: "/home",
 
     action: async (context) => {

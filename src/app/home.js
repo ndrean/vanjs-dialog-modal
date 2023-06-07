@@ -11,7 +11,7 @@ const homePage = (ctx) => {
     console.log("home");
 
     return section(
-      { id: "home", class: classes.home },
+      { id: "home", class: classes.home, style: "font-size: 1.5em;" },
       // h2(
       //   { style: "width:70vw;" },
       //   "Welcome to this demo app. It is powered by VanJS, routed by Universal-Router. It uses the CONTEXT object as a global store."
@@ -22,15 +22,7 @@ const homePage = (ctx) => {
       p("The agreement: ", Truthy({ checked: agreement.val }, agreement.val)),
       p("The selection: ", JSON.stringify(selected.val)),
       p("The form: ", JSON.stringify(formData.val)),
-      br(),
-      Link(
-        {
-          href: "https://github.com/FredericHeem/van-kit",
-          target: "#",
-          name: "source",
-        },
-        "This work is based on this repo"
-      )
+      br()
     );
   };
 };

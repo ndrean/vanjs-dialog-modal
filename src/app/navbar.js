@@ -7,15 +7,17 @@ import "../index.css";
 const navbar = (ctx) => {
   const { van, classes } = ctx;
   const Link = link(ctx);
-  const { div, nav, hr, h1 } = van.tags;
+  const { div, nav, hr } = van.tags;
 
+  const Intro = intro(context);
   const nextPage = van.state("");
 
   const handleNav = (e) => {
     e.preventDefault();
     nextPage.val = e.target.name;
+
     // needed to fake the display the change of url
-    history.pushState("", "", e.target.name);
+    history.replaceState("", "", e.target.name);
     router.resolve(e.target.pathname).then((page) => {
       const layout = document.getElementById("layout");
       layout.innerHTML = "";
@@ -26,6 +28,7 @@ const navbar = (ctx) => {
   const isPage = (next, local) => (next === local ? "page" : "");
 
   return (children) => {
+    // let page = children ? children : Intro();
     console.log("render nav");
     return van.bind(nextPage, (v) =>
       div(
@@ -69,16 +72,17 @@ const navbar = (ctx) => {
           )
         ),
         hr(),
-        div({ id: "layout", class: classes.layout }, children)
+        div({ id: "layout", class: classes.layout }, children || Intro())
       )
     );
   };
 };
 
 // fake url when starting
-history.pushState("", "", "");
+history.pushState("", "", "/");
 const Navbar = navbar(context);
 const Intro = intro(context);
+
 const { van } = context;
 
 van.add(document.body, Navbar(Intro()));
