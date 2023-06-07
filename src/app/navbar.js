@@ -1,6 +1,4 @@
 import router from "./routes.js";
-import intro from "./intro.js";
-import context from "../context.js";
 import link from "../link/link.js";
 import "../index.css";
 
@@ -9,7 +7,6 @@ const navbar = (ctx) => {
   const Link = link(ctx);
   const { div, nav, hr } = van.tags;
 
-  const Intro = intro(context);
   const nextPage = van.state("");
 
   const handleNav = (e) => {
@@ -28,7 +25,6 @@ const navbar = (ctx) => {
   const isPage = (next, local) => (next === local ? "page" : "");
 
   return (children) => {
-    // let page = children ? children : Intro();
     console.log("render nav");
     return van.bind(nextPage, (v) =>
       div(

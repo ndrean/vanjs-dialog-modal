@@ -12,11 +12,7 @@ const homePage = (ctx) => {
 
     return section(
       { id: "home", class: classes.home, style: "font-size: 1.5em;" },
-      // h2(
-      //   { style: "width:70vw;" },
-      //   "Welcome to this demo app. It is powered by VanJS, routed by Universal-Router. It uses the CONTEXT object as a global store."
-      // ),
-      // hr(),
+
       br(),
       h4("The state of the context object: "),
       p("The agreement: ", Truthy({ checked: agreement.val }, agreement.val)),
