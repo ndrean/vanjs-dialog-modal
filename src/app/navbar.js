@@ -1,6 +1,5 @@
 import router from "./routes.js";
 import link from "../link/link.js";
-import intro from "./intro";
 
 import "../index.css";
 
@@ -11,7 +10,6 @@ const navbar = (ctx) => {
 
   const nextPage = van.state("");
 
-  const Intro = intro(ctx);
   const handleNav = (e) => {
     e.preventDefault();
     nextPage.val = e.target.name;

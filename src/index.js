@@ -1,7 +1,6 @@
 import navbar from "./app/navbar";
 import intro from "./app/intro";
 import context from "./context.js";
-// import van from "./van-0.11.11.min.js";
 
 // fake url when starting
 history.pushState("", "", "/");
