@@ -72,17 +72,10 @@ const navbar = (ctx) => {
           )
         ),
         hr(),
-        div({ id: "layout", class: classes.layout }, children || Intro())
+        div({ id: "layout", class: classes.layout }, children)
       )
     );
   };
 };
 
-// fake url when starting
-history.pushState("", "", "/");
-const Navbar = navbar(context);
-const Intro = intro(context);
-
-const { van } = context;
-
-van.add(document.body, Navbar(Intro()));
+export default navbar;

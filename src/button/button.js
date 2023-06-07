@@ -5,7 +5,6 @@ export default function (ctx) {
   const { button } = van.tags;
 
   return function Button(props, ...children) {
-    console.log("Button");
     const {
       fullWidth,
       label,
