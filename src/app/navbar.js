@@ -1,37 +1,39 @@
 import router from "./routes.js";
-import homePage from "./home.js";
+import intro from "./intro.js";
+import context from "../context.js";
 import link from "../link/link.js";
 import "../index.css";
 
 const navbar = (ctx) => {
   const { van, classes } = ctx;
   const Link = link(ctx);
-  const { div, nav, hr } = van.tags;
+  const { div, nav, hr, h1 } = van.tags;
 
-  const nextPage = van.state("home");
+  const nextPage = van.state("");
 
   const handleNav = (e) => {
     e.preventDefault();
     nextPage.val = e.target.name;
-    // needed to change the url for the "active-current" selection
-    history.pushState("", "", e.target.pathname);
+    // needed to fake the display the change of url
+    history.pushState("", "", e.target.name);
     router.resolve(e.target.pathname).then((page) => {
       const layout = document.getElementById("layout");
       layout.innerHTML = "";
-      van.add(layout, page);
+      van.add(layout, page());
     });
   };
 
   const isPage = (next, local) => (next === local ? "page" : "");
 
-  return (children) =>
-    van.bind(nextPage, (v) =>
+  return (children) => {
+    console.log("render nav");
+    return van.bind(nextPage, (v) =>
       div(
         nav(
           { class: classes.nav },
           Link(
             {
-              href: "/",
+              href: "/home",
               onclick: handleNav,
               name: "home",
               ariaCurrent: isPage(v, "home"),
@@ -70,6 +72,13 @@ const navbar = (ctx) => {
         div({ id: "layout", class: classes.layout }, children)
       )
     );
+  };
 };
 
-export default navbar;
+// fake url when starting
+history.pushState("", "", "");
+const Navbar = navbar(context);
+const Intro = intro(context);
+const { van } = context;
+
+van.add(document.body, Navbar(Intro()));

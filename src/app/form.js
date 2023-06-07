@@ -3,7 +3,7 @@ import contentForm from "./contentForm.js";
 
 const formPage = (ctx) => {
   const { van, formData } = ctx;
-  const { div, br, output, p } = van.tags;
+  const { br, output, section } = van.tags;
 
   const pwd = van.state(""),
     slide = van.state(10);
@@ -19,18 +19,23 @@ const formPage = (ctx) => {
     contentForm
   );
 
-  return div(
-    {
-      class: ctx.objStr({
-        [ctx.classes.layout]: true,
-        [ctx.classes.flexDirCol]: true,
-      }),
-    },
-    Show({ id: "d2", label: "Enter you credentials" }),
-    FormModal,
-    br(),
-    output({ id: "output" })
-  );
+  return function FormPage() {
+    console.log("form");
+
+    return section(
+      {
+        id: "form",
+        class: ctx.objStr({
+          [ctx.classes.layout]: true,
+          [ctx.classes.flexDirCol]: true,
+        }),
+      },
+      Show({ id: "d2", label: "Enter you credentials" }),
+      FormModal,
+      br(),
+      output({ id: "output" })
+    );
+  };
 };
 
 export default formPage;

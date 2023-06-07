@@ -3,6 +3,7 @@ export default function (ctx) {
   const { a } = van.tags;
 
   return function Link(props, ...children) {
+    console.log("Link");
     const { href, target, name, handleClick, ...otherProps } = props;
 
     return a(

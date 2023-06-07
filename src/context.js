@@ -25,6 +25,7 @@ const context = {
     footer: "footer",
     nav: "nav",
     left: "left",
+    button: "button",
     fullWidth: "fullWidth",
     raised: "raised",
     primary: "primary",

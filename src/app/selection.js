@@ -47,37 +47,39 @@ export default (ctx) => {
     selectedAuto = van.state([]),
     keyList = van.state(keys);
 
-  return section(
-    { id: "select.examples" },
+  return function SelectionPage() {
+    console.log("select");
+    return section(
+      { id: "select" },
 
-    h1("Selection"),
-    hr(),
-    h3("A simple SELECT example"),
-    label(
-      { for: "country", style: "padding-right:10px;" },
-      "Choose a country:"
-    ),
-    select(
-      {
-        id: "country",
-        value: selected,
-        onchange: (e) => {
-          selected.val = e.currentTarget.value.toString();
-          // useDataStore.setState({ selection: selected });
+      h1("Selection"),
+      hr(),
+      h3("A simple SELECT example"),
+      label(
+        { for: "country", style: "padding-right:10px;" },
+        "Choose a country:"
+      ),
+      select(
+        {
+          id: "country",
+          value: selected,
+          onchange: (e) => {
+            selected.val = e.currentTarget.value.toString();
+            // useDataStore.setState({ selection: selected });
+          },
         },
-      },
-      option({ selected: "disabled" }, "Select a country"),
-      keys.map((country) => option({ value: country }, options[country]))
-    ),
-    br(),
-    p("Your selection: ", selected),
-    br(),
+        option({ selected: "disabled" }, "Select a country"),
+        keys.map((country) => option({ value: country }, options[country]))
+      ),
+      br(),
+      p("Your selection: ", selected),
+      br(),
 
-    h3("An AUTOCOMPLETE example with DATALIST"),
-    p(
-      "!! Van.js bug to fix on 'list' attribute for 'input' tag at the moment..."
-    )
-    /*
+      h3("An AUTOCOMPLETE example with DATALIST"),
+      p(
+        "!! Van.js bug to fix on 'list' attribute for 'input' tag at the moment..."
+      )
+      /*
       form(
                 {
                   autocomplete: "off",
@@ -113,7 +115,8 @@ export default (ctx) => {
     br()
     // div(output(options[selectedAuto]))
     */
-  );
+    );
+  };
 };
 
 function updateKeyList(input, keyList) {

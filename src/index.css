@@ -104,9 +104,6 @@ dialog {
   background-color: bisque;
 }
 
-.linkNav.active {
-  background-color: bisque;
-}
 .linkNav[aria-current="page"] {
   background-color: bisque;
 }
@@ -217,7 +214,7 @@ button.accent {
 }
 
 button::hover {
-  cursor: pointer;
+  cursor: context-menu;
 }
 
 button.raised {

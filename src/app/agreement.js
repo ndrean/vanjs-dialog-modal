@@ -23,7 +23,7 @@ const status = (ctx) => (state) => {
 
 const agreementPage = (ctx) => {
   const { van, agreement } = ctx;
-  const { div, br } = van.tags;
+  const { br, section } = van.tags;
 
   const Show = show(ctx);
   const Dialog = dialog(ctx);
@@ -39,18 +39,22 @@ const agreementPage = (ctx) => {
 
   const Status = status(ctx);
 
-  return div(
-    {
-      class: ctx.objStr({
-        [ctx.classes.layout]: true,
-        [ctx.classes.flexDirCol]: true,
-      }),
-    },
-    Show({ id: "d1", label: "Check the agreements" }),
-    AgreementModal,
-    br(),
-    Status(agreement)
-  );
+  return function AgreementPage() {
+    console.log("agreement");
+    return section(
+      {
+        id: "agreement",
+        class: ctx.objStr({
+          [ctx.classes.layout]: true,
+          [ctx.classes.flexDirCol]: true,
+        }),
+      },
+      Show({ id: "d1", label: "Check the agreements" }),
+      AgreementModal,
+      br(),
+      Status(agreement)
+    );
+  };
 };
 
 export default agreementPage;
