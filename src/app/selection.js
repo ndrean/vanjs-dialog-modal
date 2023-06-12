@@ -1,26 +1,31 @@
 import button from "../button/button";
 
 export default (ctx) => {
-  const { van, selected, countries, selectedAuto } = ctx;
-  const {
-    div,
-    section,
-    details,
-    summary,
-    p,
-    h1,
-    h3,
-    form,
-    label,
-    select,
-    option,
-    br,
-    hr,
-    input,
-    datalist,
-  } = van.tags;
+  const { van, selected, countries, selectedAuto } = ctx,
+    {
+      div,
+      section,
+      details,
+      summary,
+      p,
+      h3,
+      form,
+      label,
+      select,
+      option,
+      br,
+      hr,
+      input,
+      datalist,
+    } = van.tags,
+    optionList = van.state([]),
+    Button = button(ctx);
 
-  const Button = button(ctx);
+  const updateKeyList = (input, keys) =>
+    keys.filter((option) => option.toLowerCase().includes(input.toLowerCase()));
+
+  const updateOptionList = (keys, optionList) =>
+    keys.val.reduce((acc, key) => ({ ...acc, [key]: optionList[key] }), {});
 
   function buildList() {
     const options = {};
@@ -30,16 +35,18 @@ export default (ctx) => {
     return [options, Object.keys(options)];
   }
 
-  const [options, keys] = buildList();
-
-  const optionList = van.state([]),
+  const [options, keys] = buildList(),
     keyList = van.state(keys);
 
-  return function SelectionPage() {
-    console.log("select");
-    return section(
+  console.log("function SelectionPage");
+
+  return () =>
+    section(
       { id: "select" },
-      details(summary(h1("Selection")), p("Two examples")),
+      details(
+        summary({ style: "font-size: 1.5em;" }, "Selection"),
+        p("Two examples. The context stores the dataset.")
+      ),
 
       hr(),
       h3("A simple SELECT example"),
@@ -63,7 +70,6 @@ export default (ctx) => {
       br(),
       hr(),
       br(),
-
       h3("An AUTOCOMPLETE example with DATALIST"),
       br(),
       form(
@@ -109,18 +115,4 @@ export default (ctx) => {
         van.bind(selectedAuto, (sel) => p("You selected: ", options[sel]))
       )
     );
-  };
 };
-
-function updateKeyList(input, keys) {
-  return keys.filter((option) =>
-    option.toLowerCase().includes(input.toLowerCase())
-  );
-}
-
-function updateOptionList(keys, optionList) {
-  return keys.val.reduce(
-    (acc, key) => ({ ...acc, [key]: optionList[key] }),
-    {}
-  );
-}

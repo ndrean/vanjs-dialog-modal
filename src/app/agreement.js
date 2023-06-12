@@ -2,14 +2,15 @@ import dialog, { show } from "../modal/dialog.js";
 import contentAgreement from "./contentAgreement.js";
 
 const status = (ctx) => (state) => {
-  const { van } = ctx;
-  const { div } = van.tags;
-  const content = (r) => {
-    if (r === null) return "Please check the terms and conditions";
-    return r
+  const { van } = ctx,
+    { div } = van.tags;
+
+  const content = (r) => (
+    r === null && "Please check the terms and conditions",
+    r
       ? "I agreed with the terms and conditions"
-      : "I denied the terms and conditions";
-  };
+      : "I denied the terms and conditions"
+  );
 
   return van.bind(state, (value) =>
     div(
@@ -22,26 +23,24 @@ const status = (ctx) => (state) => {
 };
 
 const agreementPage = (ctx) => {
-  const { van, agreement } = ctx;
-  const { br, section } = van.tags;
+  const { van, agreement } = ctx,
+    { br, section } = van.tags,
+    Show = show(ctx),
+    Dialog = dialog(ctx),
+    Status = status(ctx),
+    AgreementModal = Dialog(
+      {
+        id: "d1",
+        idContent: "c1",
+        states: [agreement],
+      },
+      contentAgreement
+    );
 
-  const Show = show(ctx);
-  const Dialog = dialog(ctx);
+  console.log("Agreement");
 
-  const AgreementModal = Dialog(
-    {
-      id: "d1",
-      idContent: "c1",
-      states: [agreement],
-    },
-    contentAgreement
-  );
-
-  const Status = status(ctx);
-
-  return function AgreementPage() {
-    console.log("agreement");
-    return section(
+  return () =>
+    section(
       {
         id: "agreement",
         class: ctx.objStr({
@@ -54,7 +53,6 @@ const agreementPage = (ctx) => {
       br(),
       Status(agreement)
     );
-  };
 };
 
 export default agreementPage;

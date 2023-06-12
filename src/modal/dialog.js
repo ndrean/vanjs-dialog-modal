@@ -1,19 +1,22 @@
 import button from "../button/button";
 
 export default function (ctx) {
-  const { van } = ctx;
-  const { dialog } = van.tags;
+  const { van } = ctx,
+    { dialog } = van.tags;
 
   const handleClick = (e, id, states, dialogBox) => {
     e.target.id === id &&
-      states.map((st) => ({ ...st, val: null })) &&
+      states.map((st) => (st.val = null)) &&
       dialogBox.close();
   };
 
-  return function Dialog(props, ...children) {
-    const { id, idContent, states = [], content, ...otherProps } = props;
-    const [first, ...rest] = children;
-    const firstContent = first({ ctx, id, idContent, states });
+  console.log("function Dialog");
+
+  return (props, ...children) => {
+    const { id, idContent, states = [], content, ...otherProps } = props,
+      [first, ...rest] = children,
+      firstContent = first({ ctx, id, idContent, states });
+
     const dialogBox = dialog(
       {
         id,

@@ -2,27 +2,25 @@ import dialog, { show } from "../modal/dialog.js";
 import contentForm from "./contentForm.js";
 
 const formPage = (ctx) => {
-  const { van, formData } = ctx;
-  const { br, output, section } = van.tags;
+  const { van, formData } = ctx,
+    { br, output, section } = van.tags,
+    pwd = van.state(""),
+    slide = van.state(10),
+    Show = show(ctx),
+    Dialog = dialog(ctx),
+    FormModal = Dialog(
+      {
+        id: "d2",
+        idContent: "f1",
+        states: [pwd, slide, formData],
+      },
+      contentForm
+    );
 
-  const pwd = van.state(""),
-    slide = van.state(10);
+  console.log("function FormPage");
 
-  const Show = show(ctx);
-  const Dialog = dialog(ctx);
-  const FormModal = Dialog(
-    {
-      id: "d2",
-      idContent: "f1",
-      states: [pwd, slide, formData],
-    },
-    contentForm
-  );
-
-  return function FormPage() {
-    console.log("form");
-
-    return section(
+  return () =>
+    section(
       {
         id: "form",
         class: ctx.objStr({
@@ -35,7 +33,6 @@ const formPage = (ctx) => {
       br(),
       output({ id: "output" })
     );
-  };
 };
 
 export default formPage;

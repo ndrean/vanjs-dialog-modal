@@ -10,10 +10,10 @@ Mainly featuring a **Modal** component (`<Dialog>`) heavily following [this mode
 
 - Navigation powered by [Universal Router](https://github.com/kriasoft/universal-router) with async loading.
 - Modal (`<dialog>`) components with forms.
-- Example with `<Select>`.
+- Example with `<Select>` and `<Datalist>` with **autocomplete**.
 - The state is passed into the `context`object, thus updated on each component update (new navigation page).
 - No CSS in JS.
-- Vite bundled: 5.2k +
+- Vite bundled: 5.5k +
 
 - :exclamation: Datalist not yet available.
 

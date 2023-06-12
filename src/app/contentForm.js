@@ -1,17 +1,15 @@
 import button from "../button/button";
 import footer from "./footer";
 
-const setOutput = (val) => {
-  const output = document.getElementsByTagName("output")[0];
-  output.value = val;
-};
+const setOutput = (val) =>
+  (document.getElementsByTagName("output")[0].value = val);
 
 const contentForm = ({ ctx, ...props }) => {
-  const { van } = ctx;
-  const { form, label, input, br, p } = van.tags;
-  const setDisplay = van.state("password");
-  const Button = button(ctx);
-  const Footer = footer(ctx);
+  const { van } = ctx,
+    { form, label, input, br, p } = van.tags,
+    setDisplay = van.state("password"),
+    Button = button(ctx),
+    Footer = footer(ctx);
 
   const {
     id,
@@ -22,8 +20,8 @@ const contentForm = ({ ctx, ...props }) => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    const fData = new FormData(e.target);
-    const data = Object.fromEntries(fData);
+    const fData = new FormData(e.target),
+      data = Object.fromEntries(fData);
     formData.val = data;
     setOutput(JSON.stringify(data, null, "\t"));
     Form.reset();
@@ -57,11 +55,10 @@ const contentForm = ({ ctx, ...props }) => {
         id: "pwdbox",
         name: "pwdbox",
         type: "checkbox",
-        onchange: (e) => {
-          return e.target.checked
+        onchange: (e) =>
+          e.target.checked
             ? (setDisplay.val = "text")
-            : (setDisplay.val = "password");
-        },
+            : (setDisplay.val = "password"),
       })
     ),
     br(),

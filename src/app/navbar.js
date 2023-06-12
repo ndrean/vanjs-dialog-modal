@@ -4,11 +4,10 @@ import link from "../link/link.js";
 import "../index.css";
 
 const navbar = (ctx) => {
-  const { van, classes } = ctx;
-  const Link = link(ctx);
-  const { div, nav, hr } = van.tags;
-
-  const nextPage = van.state("");
+  const { van, classes } = ctx,
+    { div, nav, hr } = van.tags,
+    nextPage = van.state(""),
+    Link = link(ctx);
 
   const handleNav = (e) => {
     e.preventDefault();
@@ -23,9 +22,10 @@ const navbar = (ctx) => {
 
   const isPage = (next, local) => (next === local ? "page" : "");
 
-  console.log("render nav");
-  return function Navbar() {
-    return van.bind(nextPage, (v) =>
+  console.log("function Navbar");
+
+  return () =>
+    van.bind(nextPage, (v) =>
       div(
         nav(
           { class: classes.nav },
@@ -69,7 +69,6 @@ const navbar = (ctx) => {
         hr()
       )
     );
-  };
 };
 
 export default navbar;

@@ -4,7 +4,8 @@ export default function (ctx) {
   const { van, objStr, classes } = ctx;
   const { button } = van.tags;
 
-  return function Button(props, ...children) {
+  // function Button
+  return (props, ...children) => {
     const {
       fullWidth,
       label,

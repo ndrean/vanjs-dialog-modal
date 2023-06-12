@@ -2,9 +2,12 @@ import link from "../link/link";
 import vanLogo from "../../vanjs.svg";
 
 const intro = (ctx) => {
-  const { van } = ctx;
-  const { div, br, h1, h2, hr, img } = van.tags;
-  const Link = link(ctx);
+  const { van } = ctx,
+    { div, br, h1, h2, hr, img } = van.tags,
+    Link = link(ctx);
+
+  console.log("fucntion Intro");
+
   return () =>
     div(
       h2(

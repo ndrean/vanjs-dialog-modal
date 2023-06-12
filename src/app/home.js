@@ -2,21 +2,20 @@ import truthy from "./truthy";
 
 const homePage = (ctx) => {
   const {
-    van,
-    classes,
-    agreement,
-    formData,
-    selected,
-    selectedAuto,
-    countries,
-  } = ctx;
-  const { br, p, h4, section } = van.tags;
-  const Truthy = truthy(ctx);
+      van,
+      classes,
+      agreement,
+      formData,
+      selected,
+      selectedAuto,
+      countries,
+    } = ctx,
+    { br, p, h4, section } = van.tags,
+    Truthy = truthy(ctx);
 
-  return function HomePage() {
-    console.log("home");
-
-    return section(
+  console.log("function HomePage");
+  return () =>
+    section(
       { id: "home", class: classes.home, style: "font-size: 1.5em;" },
 
       br(),
@@ -32,7 +31,6 @@ const homePage = (ctx) => {
       ),
       br()
     );
-  };
 };
 
 export default homePage;

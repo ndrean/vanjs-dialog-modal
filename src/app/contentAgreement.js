@@ -3,13 +3,13 @@ import header from "./header";
 import button from "../button/button";
 
 const contentAgreement = ({ ctx, ...props }) => {
-  const { van, classes } = ctx;
-  const { article, label, input, div } = van.tags;
-  const { id, idContent, states } = props;
-  const [agreement, ...rest] = states;
-  const Footer = footer(ctx);
-  const Header = header(ctx);
-  const Button = button(ctx);
+  const { van, classes } = ctx,
+    { article, label, input, div } = van.tags,
+    { id, idContent, states } = props,
+    [agreement, ...rest] = states,
+    Footer = footer(ctx),
+    Header = header(ctx),
+    Button = button(ctx);
 
   const btnClose = (id, state) =>
     Button(
@@ -45,10 +45,7 @@ const contentAgreement = ({ ctx, ...props }) => {
           id: "agreement",
           name: "agreement",
           checked: agreement,
-          onchange: (e) => {
-            agreement.val = e.target.checked;
-            console.log(agreement.val);
-          },
+          onchange: (e) => (agreement.val = e.target.checked),
         }),
         "I agree with the terms and conditions"
       )
