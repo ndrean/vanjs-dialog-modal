@@ -6,7 +6,7 @@ export default function (ctx) {
 
   const handleClick = (e, id, states, dialogBox) => {
     e.target.id === id &&
-      states.map((st) => (st.val = null)) &&
+      states.map((st) => (st.val = false)) &&
       dialogBox.close();
   };
 
