@@ -5,10 +5,9 @@ export default function (ctx) {
   const { dialog } = van.tags;
 
   const handleClick = (e, id, states, dialogBox) => {
-    if (e.target.id === id) {
-      states.map((st) => (st.val = null));
+    e.target.id === id &&
+      states.map((st) => ({ ...st, val: null })) &&
       dialogBox.close();
-    }
   };
 
   return function Dialog(props, ...children) {

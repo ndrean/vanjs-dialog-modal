@@ -31,12 +31,12 @@ const navbar = (ctx) => {
           { class: classes.nav },
           Link(
             {
-              href: "/home",
+              href: "/context",
               onclick: handleNav,
-              name: "home",
-              ariaCurrent: isPage(v, "home"),
+              name: "Context",
+              ariaCurrent: isPage(v, "context"),
             },
-            "Home"
+            "Context"
           ),
           Link(
             {

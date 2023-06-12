@@ -45,7 +45,10 @@ const contentAgreement = ({ ctx, ...props }) => {
           id: "agreement",
           name: "agreement",
           checked: agreement,
-          onchange: (e) => (agreement.val = e.target.checked),
+          onchange: (e) => {
+            agreement.val = e.target.checked;
+            console.log(agreement.val);
+          },
         }),
         "I agree with the terms and conditions"
       )

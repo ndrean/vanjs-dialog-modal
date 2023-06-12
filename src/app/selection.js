@@ -1,18 +1,7 @@
-// import useDataStore from "./store";
-
-const countries = {
-  Estonia: "🇪🇪",
-  "European Union": "🇪🇺",
-  France: "🇫🇷",
-  Finlande: "🇫🇮",
-  Georgia: "🇬🇪",
-  Germany: "🇩🇪",
-  "United Kingdom": "🇬🇧",
-  "United States": "🇺🇸",
-};
+import button from "../button/button";
 
 export default (ctx) => {
-  const { van, classes, selected } = ctx;
+  const { van, selected, countries, selectedAuto } = ctx;
   const {
     div,
     section,
@@ -29,8 +18,9 @@ export default (ctx) => {
     hr,
     input,
     datalist,
-    span,
   } = van.tags;
+
+  const Button = button(ctx);
 
   function buildList() {
     const options = {};
@@ -42,17 +32,15 @@ export default (ctx) => {
 
   const [options, keys] = buildList();
 
-  // const selected = van.state(""),
   const optionList = van.state([]),
-    selectedAuto = van.state([]),
     keyList = van.state(keys);
 
   return function SelectionPage() {
     console.log("select");
     return section(
       { id: "select" },
+      details(summary(h1("Selection")), p("Two examples")),
 
-      h1("Selection"),
       hr(),
       h3("A simple SELECT example"),
       label(
@@ -65,7 +53,6 @@ export default (ctx) => {
           value: selected,
           onchange: (e) => {
             selected.val = e.currentTarget.value.toString();
-            // useDataStore.setState({ selection: selected });
           },
         },
         option({ selected: "disabled" }, "Select a country"),
@@ -74,57 +61,66 @@ export default (ctx) => {
       br(),
       p("Your selection: ", selected),
       br(),
+      hr(),
+      br(),
 
       h3("An AUTOCOMPLETE example with DATALIST"),
-      p(
-        "!! Van.js bug to fix on 'list' attribute for 'input' tag at the moment..."
-      )
-      /*
+      br(),
       form(
-                {
-                  autocomplete: "off",
-                  id: "autocomp",
-                  // onsubmit: (e) => {
-                    //   e.preventDefault();
-                    //   selectedAuto(Object.keys(optionList())[0]);
-                    // },
-                  },
-                  
-    div(
-      input({
-        list: "countries",
-        id: "choice",
-        placeholder: "type in...",
-        oninput: (e) => {
-          console.log(keys, e.currentTarget.value);
-          // console.log(updateKeyList(e.currentTarget.value, keys));
-          // keyList.val = updateKeyList(e.currentTarget.value, keys);
-          // console.log(keyList);
-          // optionList.val = updateOptionList(keyList, options);
+        {
+          autocomplete: "off",
+          id: "autocomp",
+          onsubmit: (e) => {
+            e.preventDefault();
+            selectedAuto.val = Object.keys(optionList.val)[0];
+          },
         },
-      }),
-      // datalist(
-      //   { id: "countries" },
-      //   keyList.map((country) =>
-      //     option({ value: country }, optionList[country])
-      //   )
-      // ),
-      button("submit")
-    ),
+        div(
+          // { style: "display: flex; justify-content: center;" ,
+          { class: ctx.classes.flexDirCol },
+          input({
+            list: "countries",
+            id: "choice",
+            placeholder: "type in...",
+            name: "selection",
+            value: selectedAuto.val,
+            oninput: (e) => {
+              keyList.val = updateKeyList(e.currentTarget.value, keys);
+              optionList.val = updateOptionList(keyList, options);
+            },
+          }),
+          datalist(
+            { id: "countries" },
+            keyList.val.map((country) =>
+              option({ value: country }, optionList[country])
+            )
+          ),
 
-    br()
-    // div(output(options[selectedAuto]))
-    */
+          Button(
+            {
+              primary: true,
+              raised: true,
+              ripple: true,
+            },
+            "Submit"
+          )
+        ),
+        br(),
+        van.bind(selectedAuto, (sel) => p("You selected: ", options[sel]))
+      )
     );
   };
 };
 
-function updateKeyList(input, keyList) {
-  return keyList.filter((option) =>
+function updateKeyList(input, keys) {
+  return keys.filter((option) =>
     option.toLowerCase().includes(input.toLowerCase())
   );
 }
 
-function updateOptionList(keyList, optionList) {
-  return keyList.reduce((acc, key) => ({ ...acc, [key]: optionList[key] }), {});
+function updateOptionList(keys, optionList) {
+  return keys.val.reduce(
+    (acc, key) => ({ ...acc, [key]: optionList[key] }),
+    {}
+  );
 }

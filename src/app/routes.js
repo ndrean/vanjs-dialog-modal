@@ -10,7 +10,7 @@ const routes = [
     },
   },
   {
-    path: "/home",
+    path: "/context",
 
     action: async (context) => {
       const { default: page } = await import("./home");

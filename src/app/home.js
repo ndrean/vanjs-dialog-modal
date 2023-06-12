@@ -1,10 +1,16 @@
-import link from "../link/link";
 import truthy from "./truthy";
 
 const homePage = (ctx) => {
-  const { van, classes, agreement, formData, selected } = ctx;
-  const { h2, br, p, hr, h4, section } = van.tags;
-  const Link = link(ctx);
+  const {
+    van,
+    classes,
+    agreement,
+    formData,
+    selected,
+    selectedAuto,
+    countries,
+  } = ctx;
+  const { br, p, h4, section } = van.tags;
   const Truthy = truthy(ctx);
 
   return function HomePage() {
@@ -16,8 +22,14 @@ const homePage = (ctx) => {
       br(),
       h4("The state of the context object: "),
       p("The agreement: ", Truthy({ checked: agreement.val }, agreement.val)),
-      p("The selection: ", JSON.stringify(selected.val)),
+      p("The selection: ", selected.val, " ", countries[selected.val]),
       p("The form: ", JSON.stringify(formData.val)),
+      p(
+        "The autcomplete selection: ",
+        selectedAuto.val,
+        " ",
+        countries[selectedAuto.val]
+      ),
       br()
     );
   };

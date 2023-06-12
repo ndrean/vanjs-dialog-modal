@@ -1,10 +1,11 @@
 import "./index.css";
-import van from "./van-0.11.11.min.js";
+import van from "./van.js";
 import objStr from "./obj-str.js";
 
 const selected = van.state(""),
   agreement = van.state(false),
-  formData = van.state({});
+  formData = van.state({}),
+  selectedAuto = van.state("");
 
 const context = {
   van,
@@ -12,6 +13,17 @@ const context = {
   selected,
   agreement,
   formData,
+  selectedAuto,
+  countries: {
+    Estonia: "🇪🇪",
+    "European Union": "🇪🇺",
+    France: "🇫🇷",
+    Finlande: "🇫🇮",
+    Georgia: "🇬🇪",
+    Germany: "🇩🇪",
+    "United Kingdom": "🇬🇧",
+    "United States": "🇺🇸",
+  },
   theme: {
     textColor: "midnightblue",
     bgColor: "bisque",
