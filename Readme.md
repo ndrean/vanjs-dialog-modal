@@ -2,6 +2,8 @@
 
 A [VanJS](https://vanjs.org/) powered demo app, with routing. No CSS-in-JS.
 
+<https://githubbox.com/ndrean/vanjs-dialog-modal>
+
 Mainly featuring a **Modal** component (`<Dialog>`) heavily following [this model](https://github.com/FredericHeem/van-kit).
 
 > To enable the "click-out", you need to pass an ID to the dialog.
