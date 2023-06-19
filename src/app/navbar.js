@@ -16,7 +16,7 @@ const navbar = (ctx) => {
     // needed to fake the display the change of url
     history.replaceState("", "", e.target.name);
     router.resolve(e.target.pathname).then((page) => {
-      document.getElementById("layout").replaceChildren(page());
+      layout.replaceChildren(page());
     });
   };
 
