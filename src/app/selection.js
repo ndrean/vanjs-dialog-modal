@@ -112,7 +112,7 @@ export default (ctx) => {
           )
         ),
         br(),
-        van.bind(selectedAuto, (sel) => p("You selected: ", options[sel]))
+        () => p("You selected: ", options[selectedAuto.val])
       )
     );
 };
