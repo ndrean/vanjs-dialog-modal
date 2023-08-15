@@ -18,7 +18,7 @@ const contentAgreement = ({ ctx, ...props }) => {
         raised: true,
         onclick: () => {
           state.val = false;
-          id.close();
+          document.getElementById(id).close();
         },
       },
       "close"

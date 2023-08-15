@@ -25,50 +25,48 @@ const navbar = (ctx) => {
   console.log("function Navbar");
 
   return () =>
-    van.bind(nextPage, (v) =>
-      div(
-        nav(
-          { class: classes.nav },
-          Link(
-            {
-              href: "/context",
-              onclick: handleNav,
-              name: "Context",
-              ariaCurrent: isPage(v, "context"),
-            },
-            "Context"
-          ),
-          Link(
-            {
-              href: "/agreement",
-              onclick: (e) => handleNav(e, "agreement"),
-              name: "agreement",
-              ariaCurrent: isPage(v, "agreement"),
-            },
-            "Agreement"
-          ),
-          Link(
-            {
-              href: "/form",
-              onclick: handleNav,
-              name: "form",
-              ariaCurrent: isPage(v, "form"),
-            },
-            "Form"
-          ),
-          Link(
-            {
-              href: "/selections",
-              onclick: handleNav,
-              name: "selection",
-              ariaCurrent: isPage(v, "selection"),
-            },
-            "Selection"
-          )
+    div(
+      nav(
+        { class: classes.nav },
+        Link(
+          {
+            href: "/context",
+            onclick: handleNav,
+            name: "Context",
+            ariaCurrent: isPage(nextPage.val, "context"),
+          },
+          "Context"
         ),
-        hr()
-      )
-    );
+        Link(
+          {
+            href: "/agreement",
+            onclick: (e) => handleNav(e, "agreement"),
+            name: "agreement",
+            ariaCurrent: isPage(nextPage.val, "agreement"),
+          },
+          "Agreement"
+        ),
+        Link(
+          {
+            href: "/form",
+            onclick: handleNav,
+            name: "form",
+            ariaCurrent: isPage(nextPage.val, "form"),
+          },
+          "Form"
+        ),
+        Link(
+          {
+            href: "/selections",
+            onclick: handleNav,
+            name: "selection",
+            ariaCurrent: isPage(nextPage.val, "selection"),
+          },
+          "Selection"
+        )
+      ),
+      hr()
+    )
 };
 
 export default navbar;

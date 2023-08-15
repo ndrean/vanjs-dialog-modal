@@ -25,7 +25,7 @@ const contentForm = ({ ctx, ...props }) => {
     formData.val = data;
     setOutput(JSON.stringify(data, null, "\t"));
     Form.reset();
-    id.close();
+    document.getElementById(id).close();
     pwd.val = "";
     slide.val = 10;
     setDisplay.val = "password";

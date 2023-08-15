@@ -1,5 +1,5 @@
 import "./index.css";
-import van from "./van.js";
+import van from "vanjs-core";
 import objStr from "./obj-str.js";
 
 const selected = van.state(""),

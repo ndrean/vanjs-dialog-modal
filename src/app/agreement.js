@@ -12,14 +12,13 @@ const status = (ctx) => (state) => {
       : "I denied the terms and conditions"
   );
 
-  return van.bind(state, (value) =>
+  return () =>
     div(
       {
-        class: value ? ctx.classes.isTrue : ctx.classes.isFalse,
+        class: state.val ? ctx.classes.isTrue : ctx.classes.isFalse,
       },
-      content(value)
-    )
-  );
+      content(state.val)
+    );
 };
 
 const agreementPage = (ctx) => {
