@@ -17,8 +17,6 @@ Mainly featuring a **Modal** component (`<Dialog>`) heavily following [this mode
 - No CSS in JS.
 - Vite bundled: 5.5k +
 
-- :exclamation: Datalist not yet available.
-
 ## Display
 
 - The build is deployed with [Surge](https://surge.sh/) at <https://van-modal.surge.sh>
